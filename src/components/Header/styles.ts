@@ -13,6 +13,18 @@ export const HeaderContainer = styled.header`
   }
 `;
 
+export const SrOnly = styled.h1`
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+`;
+
 const BaseButtonHeader = styled.span`
   border-radius: 6px;
   padding: 0.5rem;

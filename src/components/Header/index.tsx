@@ -2,13 +2,23 @@ import { MapPin, ShoppingCart } from '@phosphor-icons/react';
 
 import logo from '../../assets/logoCoffeeDelivery.svg';
 
-import { HeaderContainer, ItemsCount, NavCart, NavLocation } from './styles';
+import {
+  HeaderContainer,
+  ItemsCount,
+  NavCart,
+  NavLocation,
+  SrOnly,
+} from './styles';
 
 export function Header() {
   return (
     <HeaderContainer>
       <span>
-        <img src={logo} alt="" />
+        <SrOnly>Coffee Delivery</SrOnly>
+        <img
+          src={logo}
+          alt="ícone roxo de um copo de café, e do lado tem o nome do site coffee delivery"
+        />
       </span>
 
       <nav>
