@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
+  /* border: 1px solid red; */
+
+  width: 100%;
+  max-width: 70rem;
   padding: 2rem 0;
 
   display: flex;
@@ -50,6 +54,8 @@ export const NavLocation = styled(BaseButtonHeader)`
 
 export const NavCart = styled(BaseButtonHeader)`
   position: relative;
+
+  cursor: pointer;
   background-color: ${(props) => props.theme['yellow-100']};
   color: ${(props) => props.theme['yellow-500']};
 `;
