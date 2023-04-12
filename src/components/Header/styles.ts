@@ -4,8 +4,8 @@ export const HeaderContainer = styled.header`
   /* border: 1px solid red; */
 
   width: 100%;
-  max-width: 70rem;
-  padding: 2rem 0;
+  max-width: 72rem;
+  padding: 2rem 1rem;
 
   display: flex;
   align-items: center;

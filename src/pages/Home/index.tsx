@@ -1,3 +1,19 @@
+import { Banner } from './Banner';
+
+import {
+  HomeContainer,
+  // BannerContainer,
+  // BannerContent,
+  // BannerInformation,
+  // BannerCoffee,
+  // ItemInformation,
+  // ItemIcon,
+} from './styles';
+
 export function Home() {
-  return <h1>Home</h1>;
+  return (
+    <HomeContainer>
+      <Banner />
+    </HomeContainer>
+  );
 }
