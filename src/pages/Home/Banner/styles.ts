@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import backgroundImageBanner from '../../../assets/backgroundImageBanner.svg';
 
-export const BannerContainer = styled.div`
+export const BannerContainer = styled.section`
   width: 100%;
 
   padding: 5.75rem 0;
@@ -28,6 +28,11 @@ export const BannerContent = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 3.5rem;
+
+  img {
+    width: 29.75rem;
+    height: 22.5rem;
+  }
 `;
 
 export const BannerInformation = styled.div`

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CoffeeContainer = styled.div`
+export const CoffeeContainer = styled.section`
   width: 100%;
   max-width: 72rem;
   padding: 2rem 1rem;
@@ -18,7 +18,7 @@ export const CoffeeCardContainer = styled.div`
 
   display: grid;
   grid-template-columns: repeat(auto-fit, 16rem);
-  justify-content: space-between;
+  column-gap: 2rem;
   row-gap: 2.5rem;
 `;
 
@@ -51,7 +51,6 @@ export const CoffeeCard = styled.div`
 
 export const CoffeeTag = styled.span`
   margin: 0.75rem 0 1rem;
-  /* margin-bottom: 1rem; */
   padding: 0.25rem 0.5rem;
   border-radius: 100px;
   font-size: 0.625rem;

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
-  /* border: 1px solid red; */
-
   width: 100%;
   max-width: 72rem;
   padding: 2rem 1rem;
@@ -10,6 +8,11 @@ export const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  img {
+    width: 5.31rem;
+    height: 2.5rem;
+  }
 
   nav {
     display: flex;

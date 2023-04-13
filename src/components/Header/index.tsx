@@ -24,7 +24,7 @@ export function Header() {
       <nav>
         <NavLocation>
           <MapPin size={22} weight="fill" />
-          Porto Alegre, RS
+          São Paulo, SP
         </NavLocation>
 
         <NavCart>
