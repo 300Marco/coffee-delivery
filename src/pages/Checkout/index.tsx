@@ -1,3 +1,206 @@
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+  Minus,
+  Plus,
+  Trash,
+} from '@phosphor-icons/react';
+
+import {
+  CheckoutContainer,
+  FormBox,
+  FormContainer,
+  TitleForm,
+  TitleSection,
+  FormFields,
+  FormOfPayment,
+  ProductCard,
+  CardCoffee,
+  AmountOfCoffee,
+  TotalPriceCoffee,
+  ProductDetails,
+  Divider,
+  PurchaseDetails,
+  ConfirmOrderButton,
+} from './styles';
+
+import coffeeExpressoTradicional from '../../assets/coffee-expresso-tradicional.svg';
+
 export function Checkout() {
-  return <h1>Checkout</h1>;
+  return (
+    <CheckoutContainer>
+      <section>
+        <TitleSection>Complete seu pedido</TitleSection>
+
+        <form action="">
+          <FormContainer>
+            <FormBox>
+              <TitleForm iconColor={'yellow'}>
+                <MapPinLine size={22} />
+                <div>
+                  <span>Endereço de Entrega</span>
+                  <span>
+                    Informe o endereço onde deseja receber o seu pedido
+                  </span>
+                </div>
+              </TitleForm>
+
+              <FormFields>
+                <input name="cep" type="number" placeholder="CEP" min={1} />
+                <input name="road" type="text" placeholder="Rua" min={1} />
+
+                <div>
+                  <input
+                    name="number"
+                    type="text"
+                    placeholder="Número"
+                    min={1}
+                  />
+                  <input
+                    name="complement"
+                    type="text"
+                    placeholder="Complemento"
+                  />
+                </div>
+
+                <div>
+                  <input
+                    name="neighborhood"
+                    type="text"
+                    placeholder="Bairro"
+                    min={1}
+                  />
+                  <input name="city" type="text" placeholder="Cidade" min={1} />
+                  <input name="uf" type="text" placeholder="UF" min={1} />
+                </div>
+              </FormFields>
+            </FormBox>
+
+            <FormBox>
+              <TitleForm iconColor={'purple'}>
+                <CurrencyDollar size={22} />
+
+                <div>
+                  <span>Pagamento</span>
+                  <span>
+                    O pagamento é feito na entrega. Escolha a forma que deseja
+                    pagar
+                  </span>
+                </div>
+              </TitleForm>
+
+              <FormOfPayment>
+                <a id="creditCard" href="#creditCard">
+                  {/* <input type="radio" id="creditCard" name="option" /> */}
+                  <CreditCard size={16} />
+                  Cartão de crédito
+                </a>
+
+                <a id="debitCard" href="#debitCard">
+                  {/* <input type="radio" id="debitCard" name="option" /> */}
+                  <Bank size={16} />
+                  Cartão de Débito
+                </a>
+
+                <a id="money" href="#money">
+                  {/* <input type="radio" id="money" name="option" /> */}
+                  <Money size={16} />
+                  Dinheiro
+                </a>
+              </FormOfPayment>
+
+              {/* <FormOfPayment>
+                <span>
+                  <CreditCard size={16} />
+                  CARTÃO DE CRÉDITO
+                </span>
+
+                <span>
+                  <Bank size={16} />
+                  CARTÃO DE DÉBITO
+                </span>
+
+                <span>
+                  <Money size={16} />
+                  DINHEIRO
+                </span>
+              </FormOfPayment> */}
+            </FormBox>
+          </FormContainer>
+        </form>
+      </section>
+
+      <section>
+        <TitleSection>Cafés selecionados</TitleSection>
+
+        <ProductCard>
+          <CardCoffee>
+            <img src={coffeeExpressoTradicional} alt="" />
+
+            <ProductDetails>
+              <span>Expresso Tradicional</span>
+              <div>
+                <AmountOfCoffee>
+                  <Minus size={14} weight="bold" />
+                  <span>1</span>
+                  <Plus size={14} weight="bold" />
+                </AmountOfCoffee>
+
+                <button>
+                  <Trash size={16} /> Remover
+                </button>
+              </div>
+            </ProductDetails>
+            <TotalPriceCoffee>R$ 9,90</TotalPriceCoffee>
+          </CardCoffee>
+
+          <Divider></Divider>
+
+          <CardCoffee>
+            <img src={coffeeExpressoTradicional} alt="" />
+
+            <ProductDetails>
+              <span>Expresso Tradicional</span>
+              <div>
+                <AmountOfCoffee>
+                  <Minus size={14} weight="bold" />
+                  <span>1</span>
+                  <Plus size={14} weight="bold" />
+                </AmountOfCoffee>
+
+                <button>
+                  <Trash size={16} /> Remover
+                </button>
+              </div>
+            </ProductDetails>
+            <TotalPriceCoffee>R$ 9,90</TotalPriceCoffee>
+          </CardCoffee>
+
+          <Divider></Divider>
+
+          <PurchaseDetails>
+            <div>
+              <span>Total de Itens</span>
+              <span>R$ 19,80</span>
+            </div>
+
+            <div>
+              <span>Entrega</span>
+              <span>R$ 3,50</span>
+            </div>
+
+            <div>
+              <span>Total</span>
+              <span>R$ 23,30</span>
+            </div>
+          </PurchaseDetails>
+
+          <ConfirmOrderButton>Confirmar pedido</ConfirmOrderButton>
+        </ProductCard>
+      </section>
+    </CheckoutContainer>
+  );
 }
