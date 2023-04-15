@@ -93,41 +93,24 @@ export function Checkout() {
               </TitleForm>
 
               <FormOfPayment>
-                <a id="creditCard" href="#creditCard">
-                  {/* <input type="radio" id="creditCard" name="option" /> */}
-                  <CreditCard size={16} />
-                  Cartão de crédito
-                </a>
-
-                <a id="debitCard" href="#debitCard">
-                  {/* <input type="radio" id="debitCard" name="option" /> */}
-                  <Bank size={16} />
-                  Cartão de Débito
-                </a>
-
-                <a id="money" href="#money">
-                  {/* <input type="radio" id="money" name="option" /> */}
-                  <Money size={16} />
-                  Dinheiro
-                </a>
-              </FormOfPayment>
-
-              {/* <FormOfPayment>
-                <span>
+                <input type="radio" id="creditCard" name="option" />
+                <label htmlFor="creditCard">
                   <CreditCard size={16} />
                   CARTÃO DE CRÉDITO
-                </span>
+                </label>
 
-                <span>
+                <input type="radio" id="debitCard" name="option" />
+                <label htmlFor="debitCard">
                   <Bank size={16} />
                   CARTÃO DE DÉBITO
-                </span>
+                </label>
 
-                <span>
+                <input type="radio" id="money" name="option" />
+                <label htmlFor="money">
                   <Money size={16} />
                   DINHEIRO
-                </span>
-              </FormOfPayment> */}
+                </label>
+              </FormOfPayment>
             </FormBox>
           </FormContainer>
         </form>

@@ -118,12 +118,13 @@ export const FormOfPayment = styled.section`
   display: flex;
   gap: 0.75rem;
 
-  /* label {
+  label {
     width: 11.166875rem;
     padding: 1rem;
     font-size: 0.75rem;
     border-radius: 6px;
     cursor: pointer;
+    border: 1px solid transparent;
     transition: background-color 300ms;
     background-color: ${(props) => props.theme['gray-400']};
 
@@ -133,37 +134,6 @@ export const FormOfPayment = styled.section`
 
     &:hover {
       background-color: ${(props) => props.theme['gray-500']};
-    }
-
-    svg {
-      color: ${(props) => props.theme['purple-300']};
-    }
-  } */
-
-  a,
-  a:visited {
-    width: 11.166875rem;
-    padding: 1rem;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 300ms;
-    color: ${(props) => props.theme['gray-700']};
-    border: 1px solid ${(props) => props.theme['gray-400']};
-    background-color: ${(props) => props.theme['gray-400']};
-
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-
-    &:hover {
-      background-color: ${(props) => props.theme['gray-500']};
-    }
-
-    &:target {
-      border: 1px solid ${(props) => props.theme['purple-300']};
-      background-color: ${(props) => props.theme['purple-100']};
     }
 
     svg {
@@ -171,31 +141,16 @@ export const FormOfPayment = styled.section`
     }
   }
 
-  /* span {
-    width: 11.166875rem;
-    padding: 1rem;
-    font-size: 0.75rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 300ms;
-    background-color: ${(props) => props.theme['gray-400']};
+  input[type='radio'] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+  }
 
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-
-    &:hover {
-      background-color: ${(props) => props.theme['gray-500']};
-    }
-
-    &:focus {
-      background-color: red;
-    }
-
-    svg {
-      color: ${(props) => props.theme['purple-300']};
-    }
-  } */
+  input[type='radio']:checked + label {
+    border: 1px solid ${(props) => props.theme['purple-300']};
+    background-color: ${(props) => props.theme['purple-100']};
+  }
 `;
 
 export const ProductCard = styled.div`
