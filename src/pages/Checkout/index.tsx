@@ -19,12 +19,12 @@ import {
   FormOfPayment,
   ProductCard,
   CardCoffee,
-  AmountOfCoffee,
   TotalPriceCoffee,
   ProductDetails,
   Divider,
   PurchaseDetails,
   ConfirmOrderButton,
+  AmountOfCoffee,
 } from './styles';
 
 import coffeeExpressoTradicional from '../../assets/coffee-expresso-tradicional.svg';
@@ -64,6 +64,7 @@ export function Checkout() {
                     type="text"
                     placeholder="Complemento"
                   />
+                  <span>Opcional</span>
                 </div>
 
                 <div>
@@ -128,7 +129,7 @@ export function Checkout() {
               <div>
                 <AmountOfCoffee>
                   <Minus size={14} weight="bold" />
-                  <span>1</span>
+                  <input type="number" value={1} />
                   <Plus size={14} weight="bold" />
                 </AmountOfCoffee>
 
@@ -150,7 +151,7 @@ export function Checkout() {
               <div>
                 <AmountOfCoffee>
                   <Minus size={14} weight="bold" />
-                  <span>1</span>
+                  <input type="number" value={1} />
                   <Plus size={14} weight="bold" />
                 </AmountOfCoffee>
 

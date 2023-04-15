@@ -50,13 +50,20 @@ export const CoffeeCard = styled.div`
 `;
 
 export const CoffeeTag = styled.span`
-  margin: 0.75rem 0 1rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 100px;
-  font-size: 0.625rem;
-  font-family: 'Baloo 2', sans-serif;
-  background-color: ${(props) => props.theme['yellow-100']};
-  color: ${(props) => props.theme['yellow-500']};
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  span {
+    margin: 0.75rem 0 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 100px;
+    font-size: 0.625rem;
+    font-family: 'Baloo 2', sans-serif;
+    text-transform: uppercase;
+    background-color: ${(props) => props.theme['yellow-100']};
+    color: ${(props) => props.theme['yellow-500']};
+  }
 `;
 
 export const BuyContainer = styled.div`
@@ -91,11 +98,21 @@ export const AmountOfCoffee = styled.div`
 
   display: flex;
   align-items: center;
-  gap: 0.5945rem;
+  gap: 0.25rem;
 
-  span {
-    font-size: 1rem;
+  input {
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    pointer-events: none;
+    width: 1.25rem;
     color: ${(props) => props.theme['gray-900']};
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   svg {

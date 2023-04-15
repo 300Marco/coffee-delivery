@@ -111,6 +111,16 @@ export const FormFields = styled.section`
 
     display: flex;
     gap: 0.75rem;
+
+    span {
+      font-size: 0.75rem;
+      font-style: italic;
+      color: ${(props) => props.theme['gray-600']};
+
+      position: absolute;
+      top: 14px;
+      right: 14px;
+    }
   }
 `;
 
@@ -188,7 +198,7 @@ export const ProductDetails = styled.div`
     text-transform: uppercase;
     border: 0;
     border-radius: 6px;
-    padding: 0.5rem 0.5rem;
+    padding: 0.684rem 0.5rem;
     cursor: pointer;
     transition: background-color 300ms;
     background-color: ${(props) => props.theme['gray-400']};
@@ -210,15 +220,25 @@ export const ProductDetails = styled.div`
 export const AmountOfCoffee = styled.div`
   background-color: ${(props) => props.theme['gray-400']};
   border-radius: 6px;
-  padding: 0.407rem 0.5rem;
+  padding: 0.5875rem 0.5rem;
 
   display: flex;
   align-items: center;
-  gap: 0.5945rem;
+  gap: 0.25rem;
 
-  span {
-    font-size: 1rem;
+  input {
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    pointer-events: none;
+    width: 0.75rem;
     color: ${(props) => props.theme['gray-900']};
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   svg {
