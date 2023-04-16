@@ -4,8 +4,6 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
-  Minus,
-  Plus,
   Trash,
 } from '@phosphor-icons/react';
 
@@ -24,10 +22,10 @@ import {
   Divider,
   PurchaseDetails,
   ConfirmOrderButton,
-  AmountOfCoffee,
 } from './styles';
 
 import coffeeExpressoTradicional from '../../assets/coffee-expresso-tradicional.svg';
+import { AmountOfCoffee } from '../components/AmountOfCoffee';
 
 export function Checkout() {
   return (
@@ -127,11 +125,7 @@ export function Checkout() {
             <ProductDetails>
               <span>Expresso Tradicional</span>
               <div>
-                <AmountOfCoffee>
-                  <Minus size={14} weight="bold" />
-                  <input type="number" value={1} />
-                  <Plus size={14} weight="bold" />
-                </AmountOfCoffee>
+                <AmountOfCoffee />
 
                 <button>
                   <Trash size={16} /> Remover
@@ -149,11 +143,7 @@ export function Checkout() {
             <ProductDetails>
               <span>Expresso Tradicional</span>
               <div>
-                <AmountOfCoffee>
-                  <Minus size={14} weight="bold" />
-                  <input type="number" value={1} />
-                  <Plus size={14} weight="bold" />
-                </AmountOfCoffee>
+                <AmountOfCoffee />
 
                 <button>
                   <Trash size={16} /> Remover

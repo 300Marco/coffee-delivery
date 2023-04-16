@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingCart } from '@phosphor-icons/react';
+import { ShoppingCart } from '@phosphor-icons/react';
 
 import coffeeExpressoTradicional from '../../../assets/coffee-expresso-tradicional.svg';
 import {
@@ -8,9 +8,9 @@ import {
   CoffeeTag,
   BuyContainer,
   AddToCart,
-  AmountOfCoffee,
   CartButton,
 } from './styles';
+import { AmountOfCoffee } from '../../components/AmountOfCoffee';
 
 export function CoffeeList() {
   return (
@@ -35,11 +35,7 @@ export function CoffeeList() {
               R$ <span>9,90</span>
             </span>
             <AddToCart>
-              <AmountOfCoffee>
-                <Minus size={14} weight="bold" />
-                <input type="number" value={1} />
-                <Plus size={14} weight="bold" />
-              </AmountOfCoffee>
+              <AmountOfCoffee />
 
               <CartButton>
                 <ShoppingCart size={22} weight="fill" />
@@ -65,11 +61,7 @@ export function CoffeeList() {
               R$ <span>9,90</span>
             </span>
             <AddToCart>
-              <AmountOfCoffee>
-                <Minus size={14} weight="bold" />
-                <input type="number" value={1} />
-                <Plus size={14} weight="bold" />
-              </AmountOfCoffee>
+              <AmountOfCoffee />
 
               <CartButton>
                 <ShoppingCart size={22} weight="fill" />
@@ -94,11 +86,7 @@ export function CoffeeList() {
               R$ <span>9,90</span>
             </span>
             <AddToCart>
-              <AmountOfCoffee>
-                <Minus size={14} weight="bold" />
-                <input type="number" value={1} />
-                <Plus size={14} weight="bold" />
-              </AmountOfCoffee>
+              <AmountOfCoffee />
 
               <CartButton>
                 <ShoppingCart size={22} weight="fill" />
@@ -123,11 +111,7 @@ export function CoffeeList() {
               R$ <span>9,90</span>
             </span>
             <AddToCart>
-              <AmountOfCoffee>
-                <Minus size={14} weight="bold" />
-                <input type="number" value={1} />
-                <Plus size={14} weight="bold" />
-              </AmountOfCoffee>
+              <AmountOfCoffee />
 
               <CartButton>
                 <ShoppingCart size={22} weight="fill" />
@@ -151,11 +135,7 @@ export function CoffeeList() {
               R$ <span>9,90</span>
             </span>
             <AddToCart>
-              <AmountOfCoffee>
-                <Minus size={14} weight="bold" />
-                <input type="number" value={1} />
-                <Plus size={14} weight="bold" />
-              </AmountOfCoffee>
+              <AmountOfCoffee />
 
               <CartButton>
                 <ShoppingCart size={22} weight="fill" />
@@ -180,11 +160,7 @@ export function CoffeeList() {
               R$ <span>9,90</span>
             </span>
             <AddToCart>
-              <AmountOfCoffee>
-                <Minus size={14} weight="bold" />
-                <input type="number" value={1} />
-                <Plus size={14} weight="bold" />
-              </AmountOfCoffee>
+              <AmountOfCoffee />
 
               <CartButton>
                 <ShoppingCart size={22} weight="fill" />
