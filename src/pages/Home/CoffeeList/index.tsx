@@ -1,7 +1,7 @@
 import nextId from 'react-id-generator';
 import { ShoppingCart } from '@phosphor-icons/react';
 
-import coffeeExpressoTradicional from '../../../assets/coffee-expresso-tradicional.svg';
+// import coffeeExpressoTradicional from '../../../assets/coffee-expresso-tradicional.svg';
 import {
   CoffeeContainer,
   CoffeeCardContainer,
@@ -25,7 +25,7 @@ interface CoffeesProps {
 const coffees: CoffeesProps[] = [
   {
     id: '1',
-    image: '',
+    image: 'expresso-tradicional.png',
     tags: ['Tradicional'],
     title: 'Expresso Tradicional',
     paragraph: 'O tradicional café feito com água quente e grãos moídos',
@@ -33,7 +33,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '2',
-    image: '',
+    image: 'expresso-americano.png',
     tags: ['Tradicional'],
     title: 'Expresso Americano',
     paragraph: 'Expresso diluído, menos intenso que o tradicional',
@@ -41,7 +41,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '3',
-    image: '',
+    image: 'expresso-cremoso.png',
     tags: ['Tradicional'],
     title: 'Expresso Cremoso',
     paragraph: 'Café expresso tradicional com espuma cremosa',
@@ -49,7 +49,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '4',
-    image: '',
+    image: 'expresso-gelado.png',
     tags: ['Tradicional', 'Gelado'],
     title: 'Expresso Gelado',
     paragraph: 'Bebida preparada com café expresso e cubos de gelo',
@@ -57,7 +57,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '5',
-    image: '',
+    image: 'cafe-leite.png',
     tags: ['Tradicional', 'Com leite'],
     title: 'Café com Leite',
     paragraph: 'Meio a meio de expresso tradicional com leite vaporizado',
@@ -65,7 +65,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '6',
-    image: '',
+    image: 'latte.png',
     tags: ['Tradicional', 'Com leite'],
     title: 'Latte',
     paragraph:
@@ -74,7 +74,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '7',
-    image: '',
+    image: 'capuccino.png',
     tags: ['Tradicional', 'Com leite'],
     title: 'Capuccino',
     paragraph:
@@ -83,7 +83,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '8',
-    image: '',
+    image: 'macchiato.png',
     tags: ['Tradicional', 'Com leite'],
     title: 'Macchiato',
     paragraph: 'Café expresso misturado com um pouco de leite quente e espuma',
@@ -91,7 +91,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '9',
-    image: '',
+    image: 'mocaccino.png',
     tags: ['Tradicional', 'Com leite'],
     title: 'Mocaccino',
     paragraph: 'Café expresso com calda de chocolate, pouco leite e espuma',
@@ -99,7 +99,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '10',
-    image: '',
+    image: 'chocolate-quente.png',
     tags: ['Especial', 'Com leite'],
     title: 'Chocolate Quente',
     paragraph: 'Bebida feita com chocolate dissolvido no leite quente e café',
@@ -107,7 +107,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '11',
-    image: '',
+    image: 'cubano.png',
     tags: ['Especial', 'Alcoólico', 'Gelado'],
     title: 'Cubano',
     paragraph:
@@ -116,7 +116,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '12',
-    image: '',
+    image: 'havaiano.png',
     tags: ['Especial'],
     title: 'Havaiano',
     paragraph: 'Bebida adocicada preparada com café e leite de coco',
@@ -124,7 +124,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '13',
-    image: '',
+    image: 'arabe.png',
     tags: ['Especial'],
     title: 'Árabe',
     paragraph: 'Bebida preparada com grãos de café árabe e especiarias',
@@ -132,7 +132,7 @@ const coffees: CoffeesProps[] = [
   },
   {
     id: '14',
-    image: '',
+    image: 'irlandes.png',
     tags: ['Especial', 'Alcoólico'],
     title: 'Irlandês',
     paragraph: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
@@ -149,7 +149,7 @@ export function CoffeeList() {
         {coffees.map((coffee) => {
           return (
             <CoffeeCard key={coffee.id}>
-              <img src={coffeeExpressoTradicional} alt="" />
+              <img src={`/coffees/${coffee.image}`} alt="" />
 
               <CoffeeTag>
                 {coffee.tags.map((tag) => {
