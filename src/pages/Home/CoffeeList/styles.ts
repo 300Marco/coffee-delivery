@@ -38,6 +38,7 @@ export const CoffeeCard = styled.div`
   h4 {
     font-family: 'Baloo 2', sans-serif;
     font-size: 1.25rem;
+    font-weight: 800;
     color: ${(props) => props.theme['gray-800']};
   }
 
@@ -79,7 +80,7 @@ export const BuyContainer = styled.div`
 
     span {
       font-size: 1.5rem;
-      font-weight: bold;
+      font-weight: 800;
       font-family: 'Baloo 2', sans-serif;
     }
   }

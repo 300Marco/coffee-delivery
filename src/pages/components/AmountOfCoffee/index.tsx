@@ -1,6 +1,5 @@
 import { Minus, Plus } from '@phosphor-icons/react';
 import { AmountOfCoffeeContainer } from './styles';
-import { useState } from 'react';
 
 export function AmountOfCoffee() {
   // let [test1, setTest1] = useState(0);
