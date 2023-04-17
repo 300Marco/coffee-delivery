@@ -7,21 +7,12 @@ export const AmountOfCoffeeContainer = styled.div`
 
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.595rem;
 
-  input {
+  span {
     text-align: center;
-    border: none;
-    background-color: transparent;
-    pointer-events: none;
-    width: 1.25rem;
+    font-size: 1rem;
     color: ${(props) => props.theme['gray-900']};
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
   }
 
   svg {
@@ -29,7 +20,7 @@ export const AmountOfCoffeeContainer = styled.div`
     cursor: pointer;
     transition: color 300ms;
 
-    &:active {
+    &:hover {
       color: ${(props) => props.theme['purple-500']};
     }
 

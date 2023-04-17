@@ -1,3 +1,4 @@
+import nextId from 'react-id-generator';
 import { ShoppingCart } from '@phosphor-icons/react';
 
 import coffeeExpressoTradicional from '../../../assets/coffee-expresso-tradicional.svg';
@@ -152,7 +153,9 @@ export function CoffeeList() {
 
               <CoffeeTag>
                 {coffee.tags.map((tag) => {
-                  return <span key={0}>{tag}</span>;
+                  const tagId = nextId();
+
+                  return <span key={tagId}>{tag}</span>;
                 })}
               </CoffeeTag>
 
