@@ -1,7 +1,8 @@
-import nextId from 'react-id-generator';
-import { ShoppingCart } from '@phosphor-icons/react';
+import { useState } from 'react';
 
-// import coffeeExpressoTradicional from '../../../assets/coffee-expresso-tradicional.svg';
+import { ShoppingCart } from '@phosphor-icons/react';
+import nextId from 'react-id-generator';
+
 import {
   CoffeeContainer,
   CoffeeCardContainer,
@@ -11,6 +12,7 @@ import {
   AddToCart,
   CartButton,
 } from './styles';
+
 import { AmountOfCoffee } from '../../components/AmountOfCoffee';
 
 interface CoffeesProps {
@@ -141,6 +143,23 @@ const coffees: CoffeesProps[] = [
 ];
 
 export function CoffeeList() {
+  const [selectedCoffees, setSelectedCoffees] = useState<CoffeesProps[]>([]);
+
+  function getCoffeeId(id: string) {
+    const getSelectedCoffee: CoffeesProps = coffees.find(
+      (coffee) => coffee.id === id,
+    )!;
+
+    const selectedCoffeeFilter: boolean =
+      selectedCoffees.indexOf(getSelectedCoffee) > -1;
+
+    if (selectedCoffeeFilter === false) {
+      setSelectedCoffees((state) => [...state, getSelectedCoffee]);
+    }
+  }
+
+  console.log(selectedCoffees);
+
   return (
     <CoffeeContainer>
       <h3>Nossos Cafés</h3>
@@ -149,7 +168,7 @@ export function CoffeeList() {
         {coffees.map((coffee) => {
           return (
             <CoffeeCard key={coffee.id}>
-              <img src={`/coffees/${coffee.image}`} alt="" />
+              <img src={`./coffees/${coffee.image}`} alt="" />
 
               <CoffeeTag>
                 {coffee.tags.map((tag) => {
@@ -175,7 +194,7 @@ export function CoffeeList() {
                 <AddToCart>
                   <AmountOfCoffee />
 
-                  <CartButton>
+                  <CartButton onClick={() => getCoffeeId(coffee.id)}>
                     <ShoppingCart size={22} weight="fill" />
                   </CartButton>
                 </AddToCart>
@@ -183,32 +202,6 @@ export function CoffeeList() {
             </CoffeeCard>
           );
         })}
-
-        {/* <CoffeeCard>
-          <img src={coffeeExpressoTradicional} alt="" />
-
-          <CoffeeTag>
-            <span>Tradicional</span>
-            <span>Gelado</span>
-          </CoffeeTag>
-
-          <h4>Expresso Tradicional</h4>
-
-          <p>O tradicional café feito com água quente e grãos moídos</p>
-
-          <BuyContainer>
-            <span>
-              R$ <span>9,90</span>
-            </span>
-            <AddToCart>
-              <AmountOfCoffee />
-
-              <CartButton>
-                <ShoppingCart size={22} weight="fill" />
-              </CartButton>
-            </AddToCart>
-          </BuyContainer>
-        </CoffeeCard> */}
       </CoffeeCardContainer>
     </CoffeeContainer>
   );
