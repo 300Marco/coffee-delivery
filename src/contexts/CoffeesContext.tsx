@@ -8,6 +8,7 @@ interface CoffeesProps {
   title: string;
   paragraph: string;
   price: number;
+  quantity: number;
 }
 
 interface CoffeesContextType {
