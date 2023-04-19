@@ -15,6 +15,7 @@ interface CoffeesContextType {
   coffee: CoffeesProps[];
   coffeeDatabase: CoffeesProps[];
   coffeeList: (id: string) => void;
+  getQuantityAmount: (value: number) => void;
 }
 
 export const CoffeesContext = createContext({} as CoffeesContextType);
@@ -26,6 +27,12 @@ interface CoffeesContextProviderProps {
 export function CoffeesContextProvider({
   children,
 }: CoffeesContextProviderProps) {
+  const [quantityCoffee, setQuantityCoffee] = useState(1);
+
+  function getQuantityAmount(value: number) {
+    setQuantityCoffee(value);
+  }
+
   const [coffee, setCoffee] = useState<CoffeesProps[]>([]);
 
   function coffeeList(id: string) {
@@ -36,12 +43,24 @@ export function CoffeesContextProvider({
     const checkDuplicateCoffees: boolean = coffee.indexOf(selectedCoffee) > -1;
 
     if (checkDuplicateCoffees === false) {
+      selectedCoffee.quantity = quantityCoffee;
+
       setCoffee((state) => [...state, selectedCoffee]);
+      setQuantityCoffee(1);
     }
   }
 
+  console.log(coffee);
+
   return (
-    <CoffeesContext.Provider value={{ coffee, coffeeList, coffeeDatabase }}>
+    <CoffeesContext.Provider
+      value={{
+        coffee,
+        coffeeList,
+        coffeeDatabase,
+        getQuantityAmount,
+      }}
+    >
       {children}
     </CoffeesContext.Provider>
   );
