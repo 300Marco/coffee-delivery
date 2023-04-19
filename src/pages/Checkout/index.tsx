@@ -138,7 +138,12 @@ export function Checkout() {
                       </button>
                     </div>
                   </ProductDetails>
-                  <TotalPriceCoffee>R$ {coffee.price}</TotalPriceCoffee>
+                  <TotalPriceCoffee>
+                    R${' '}
+                    {coffee.price.toLocaleString('pt-br', {
+                      minimumFractionDigits: 2,
+                    })}
+                  </TotalPriceCoffee>
                 </CardCoffee>
                 <Divider></Divider>
               </div>
