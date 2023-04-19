@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+
 import {
   Bank,
   CreditCard,
@@ -6,6 +8,9 @@ import {
   Money,
   Trash,
 } from '@phosphor-icons/react';
+
+import { CoffeesContext } from '../../contexts/CoffeesContext';
+import { AmountOfCoffee } from '../../components/AmountOfCoffee';
 
 import {
   CheckoutContainer,
@@ -24,10 +29,11 @@ import {
   ConfirmOrderButton,
 } from './styles';
 
-import coffeeExpressoTradicional from '../../assets/coffee-expresso-tradicional.svg';
-import { AmountOfCoffee } from '../../components/AmountOfCoffee';
-
 export function Checkout() {
+  const { coffee } = useContext(CoffeesContext);
+
+  console.log(coffee);
+
   return (
     <CheckoutContainer>
       <section>
@@ -119,41 +125,27 @@ export function Checkout() {
         <TitleSection>Cafés selecionados</TitleSection>
 
         <ProductCard>
-          <CardCoffee>
-            <img src={coffeeExpressoTradicional} alt="" />
+          {coffee.map((coffee) => {
+            return (
+              <div key={coffee.id}>
+                <CardCoffee>
+                  <img src={`./coffees/${coffee.image}`} alt="" />
+                  <ProductDetails>
+                    <span>{coffee.title}</span>
+                    <div>
+                      <AmountOfCoffee />
 
-            <ProductDetails>
-              <span>Expresso Tradicional</span>
-              <div>
-                <AmountOfCoffee />
-
-                <button>
-                  <Trash size={16} /> Remover
-                </button>
+                      <button>
+                        <Trash size={16} /> Remover
+                      </button>
+                    </div>
+                  </ProductDetails>
+                  <TotalPriceCoffee>R$ {coffee.price}</TotalPriceCoffee>
+                </CardCoffee>
+                <Divider></Divider>
               </div>
-            </ProductDetails>
-            <TotalPriceCoffee>R$ 9,90</TotalPriceCoffee>
-          </CardCoffee>
-
-          <Divider></Divider>
-
-          <CardCoffee>
-            <img src={coffeeExpressoTradicional} alt="" />
-
-            <ProductDetails>
-              <span>Expresso Tradicional</span>
-              <div>
-                <AmountOfCoffee />
-
-                <button>
-                  <Trash size={16} /> Remover
-                </button>
-              </div>
-            </ProductDetails>
-            <TotalPriceCoffee>R$ 9,90</TotalPriceCoffee>
-          </CardCoffee>
-
-          <Divider></Divider>
+            );
+          })}
 
           <PurchaseDetails>
             <div>
@@ -171,7 +163,6 @@ export function Checkout() {
               <span>R$ 23,30</span>
             </div>
           </PurchaseDetails>
-
           <ConfirmOrderButton>Confirmar pedido</ConfirmOrderButton>
         </ProductCard>
       </section>
