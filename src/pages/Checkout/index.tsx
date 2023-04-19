@@ -22,6 +22,7 @@ import {
   FormOfPayment,
   ProductCard,
   CardCoffee,
+  NoCoffee,
   TotalPriceCoffee,
   ProductDetails,
   Divider,
@@ -123,32 +124,36 @@ export function Checkout() {
         <TitleSection>Cafés selecionados</TitleSection>
 
         <ProductCard>
-          {coffee.map((coffee) => {
-            return (
-              <div key={coffee.id}>
-                <CardCoffee>
-                  <img src={`./coffees/${coffee.image}`} alt="" />
-                  <ProductDetails>
-                    <span>{coffee.title}</span>
-                    <div>
-                      <AmountOfCoffee />
+          {coffee.length > 0 ? (
+            coffee.map((coffee) => {
+              return (
+                <div key={coffee.id}>
+                  <CardCoffee>
+                    <img src={`./coffees/${coffee.image}`} alt="" />
+                    <ProductDetails>
+                      <span>{coffee.title}</span>
+                      <div>
+                        <AmountOfCoffee />
 
-                      <button>
-                        <Trash size={16} /> Remover
-                      </button>
-                    </div>
-                  </ProductDetails>
-                  <TotalPriceCoffee>
-                    R${' '}
-                    {coffee.price.toLocaleString('pt-br', {
-                      minimumFractionDigits: 2,
-                    })}
-                  </TotalPriceCoffee>
-                </CardCoffee>
-                <Divider></Divider>
-              </div>
-            );
-          })}
+                        <button>
+                          <Trash size={16} /> Remover
+                        </button>
+                      </div>
+                    </ProductDetails>
+                    <TotalPriceCoffee>
+                      R${' '}
+                      {coffee.price.toLocaleString('pt-br', {
+                        minimumFractionDigits: 2,
+                      })}
+                    </TotalPriceCoffee>
+                  </CardCoffee>
+                  <Divider></Divider>
+                </div>
+              );
+            })
+          ) : (
+            <NoCoffee>Nenhum café selecionado</NoCoffee>
+          )}
 
           <PurchaseDetails>
             <div>

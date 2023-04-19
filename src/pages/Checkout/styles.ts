@@ -182,6 +182,12 @@ export const CardCoffee = styled.div`
   }
 `;
 
+export const NoCoffee = styled.div`
+  width: 23rem;
+  padding: 0 0 4rem;
+  text-align: center;
+`;
+
 export const ProductDetails = styled.div`
   display: flex;
   flex-direction: column;
