@@ -5,21 +5,21 @@ import { useState } from 'react';
 export function AmountOfCoffee() {
   let [quantity, setQuantity] = useState(1);
 
-  function removeCoffee() {
+  function handleRemoveCoffee() {
     if (quantity > 1) {
       setQuantity((quantity -= 1));
     }
   }
 
-  function addCoffee() {
+  function handleAddCoffee() {
     setQuantity((quantity += 1));
   }
 
   return (
     <AmountOfCoffeeContainer>
-      <Minus size={14} weight="bold" onClick={removeCoffee} />
+      <Minus size={14} weight="bold" onClick={handleRemoveCoffee} />
       <span>{quantity}</span>
-      <Plus size={14} weight="bold" onClick={addCoffee} />
+      <Plus size={14} weight="bold" onClick={handleAddCoffee} />
     </AmountOfCoffeeContainer>
   );
 }

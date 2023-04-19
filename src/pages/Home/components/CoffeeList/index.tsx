@@ -12,8 +12,7 @@ import {
   AddToCart,
   CartButton,
 } from './styles';
-
-import { AmountOfCoffee } from '../../components/AmountOfCoffee';
+import { AmountOfCoffee } from '../../../../components/AmountOfCoffee';
 
 interface CoffeesProps {
   id: string;
@@ -24,6 +23,8 @@ interface CoffeesProps {
   price: number;
 }
 
+// mudar nome da variável, essa const, enviarei para algum outra pasta, para ficar com os dados armazenados, separados.
+// e irei importar aqui novamente, para utilizar desses dados.
 const coffees: CoffeesProps[] = [
   {
     id: '1',
@@ -143,13 +144,16 @@ const coffees: CoffeesProps[] = [
 ];
 
 export function CoffeeList() {
+  // mudar nome da variável para "coffees"
   const [selectedCoffees, setSelectedCoffees] = useState<CoffeesProps[]>([]);
 
-  function getCoffeeId(id: string) {
+  function handleGetCoffeeId(id: string) {
+    // mudar nome da variável para selectedCoffees
     const getSelectedCoffee: CoffeesProps = coffees.find(
       (coffee) => coffee.id === id,
     )!;
 
+    // mudar nome da variável para coffeesFilter - pesquisa no translate antes
     const selectedCoffeeFilter: boolean =
       selectedCoffees.indexOf(getSelectedCoffee) > -1;
 
@@ -194,7 +198,7 @@ export function CoffeeList() {
                 <AddToCart>
                   <AmountOfCoffee />
 
-                  <CartButton onClick={() => getCoffeeId(coffee.id)}>
+                  <CartButton onClick={() => handleGetCoffeeId(coffee.id)}>
                     <ShoppingCart size={22} weight="fill" />
                   </CartButton>
                 </AddToCart>

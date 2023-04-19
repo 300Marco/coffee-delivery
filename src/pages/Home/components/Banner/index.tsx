@@ -1,6 +1,6 @@
 import { Coffee, Package, ShoppingCart, Timer } from '@phosphor-icons/react';
 
-import coffeeBanner from '../../../assets/coffeeBanner.svg';
+import coffeeBanner from '../../../../assets/coffeeBanner.svg';
 
 import {
   BannerContainer,

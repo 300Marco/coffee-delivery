@@ -25,7 +25,7 @@ import {
 } from './styles';
 
 import coffeeExpressoTradicional from '../../assets/coffee-expresso-tradicional.svg';
-import { AmountOfCoffee } from '../components/AmountOfCoffee';
+import { AmountOfCoffee } from '../../components/AmountOfCoffee';
 
 export function Checkout() {
   return (

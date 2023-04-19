@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import backgroundImageBanner from '../../../assets/backgroundImageBanner.svg';
+import backgroundImageBanner from '../../../../assets/backgroundImageBanner.svg';
 
 export const BannerContainer = styled.section`
   width: 100%;

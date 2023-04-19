@@ -1,5 +1,5 @@
-import { Banner } from './Banner';
-import { CoffeeList } from './CoffeeList';
+import { Banner } from './components/Banner';
+import { CoffeeList } from './components/CoffeeList';
 
 import { HomeContainer } from './styles';
 
