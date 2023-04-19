@@ -3,8 +3,6 @@ import { useContext } from 'react';
 import { ShoppingCart } from '@phosphor-icons/react';
 import nextId from 'react-id-generator';
 
-// import { coffeeDatabase } from '../../../../database';
-
 import { AmountOfCoffee } from '../../../../components/AmountOfCoffee';
 
 import {
@@ -18,32 +16,7 @@ import {
 } from './styles';
 import { CoffeesContext } from '../../../../contexts/CoffeesContext';
 
-// interface CoffeesProps {
-//   id: string;
-//   image: string;
-//   tags: string[];
-//   title: string;
-//   paragraph: string;
-//   price: number;
-// }
-
 export function CoffeeList() {
-  // const [coffee, setCoffee] = useState<CoffeesProps[]>([]);
-
-  // function handleGetCoffeeId(id: string) {
-  //   const selectedCoffee: CoffeesProps = coffeeDatabase.find(
-  //     (coffee) => coffee.id === id,
-  //   )!;
-
-  //   const checkDuplicateCoffees: boolean = coffee.indexOf(selectedCoffee) > -1;
-
-  //   if (checkDuplicateCoffees === false) {
-  //     setCoffee((state) => [...state, selectedCoffee]);
-  //   }
-  // }
-
-  // const [coffee, setCoffee] = useState<CoffeesProps[]>([]);
-
   const { coffeeList, coffeeDatabase } = useContext(CoffeesContext);
 
   function handleGetCoffeeId(id: string) {

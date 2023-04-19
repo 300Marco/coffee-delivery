@@ -32,8 +32,6 @@ import {
 export function Checkout() {
   const { coffee } = useContext(CoffeesContext);
 
-  console.log(coffee);
-
   return (
     <CheckoutContainer>
       <section>
