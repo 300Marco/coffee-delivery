@@ -41,8 +41,6 @@ export function CoffeeList() {
     }
   }
 
-  console.log(coffee);
-
   return (
     <CoffeeContainer>
       <h3>Nossos Cafés</h3>
@@ -77,7 +75,10 @@ export function CoffeeList() {
                 <AddToCart>
                   <AmountOfCoffee />
 
-                  <CartButton onClick={() => handleGetCoffeeId(coffee.id)}>
+                  <CartButton
+                    onClick={() => handleGetCoffeeId(coffee.id)}
+                    title="Adicionar ao carrinho"
+                  >
                     <ShoppingCart size={22} weight="fill" />
                   </CartButton>
                 </AddToCart>
