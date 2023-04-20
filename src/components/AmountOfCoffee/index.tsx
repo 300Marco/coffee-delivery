@@ -18,28 +18,16 @@ export function AmountOfCoffee({
 
   const [mount, setMount] = useState(false); // State to prevent further executions of useEffect
 
-  useEffect(() => {
-    if (!mount) {
-      setMount(true);
-
-      if (quantityCheckout) {
-        setAlterQuantityCheckout(quantityCheckout);
-      }
-    }
-  }, [quantityCheckout, mount]);
-
-  // useEffect(() => {
-  //   if (quantityCheckout) {
-  //     setAlterQuantityCheckout(quantityCheckout);
-  //   }
-  // }, []);
-
   let [quantity, setQuantity] = useState(1);
 
   function handleRemoveCoffee() {
     if (quantity > 1) {
       setQuantity((quantity -= 1));
       getQuantityAmount(quantity);
+    }
+
+    if (alterQuantityCheckout > 1) {
+      setAlterQuantityCheckout((alterQuantityCheckout -= 1));
     }
   }
 
@@ -58,6 +46,16 @@ export function AmountOfCoffee({
     }
   });
 
+  useEffect(() => {
+    if (!mount) {
+      setMount(true);
+
+      if (quantityCheckout) {
+        setAlterQuantityCheckout(quantityCheckout);
+      }
+    }
+  }, [quantityCheckout, mount]);
+
   return (
     <AmountOfCoffeeContainer>
       <Minus size={14} weight="bold" onClick={handleRemoveCoffee} />
@@ -66,12 +64,6 @@ export function AmountOfCoffee({
       ) : (
         <span>{quantity}</span>
       )}
-
-      {/* {quantityCheckout ? (
-        <span>{quantityCheckout}</span>
-      ) : (
-        <span>{quantity}</span>
-      )} */}
       <Plus size={14} weight="bold" onClick={handleAddCoffee} />
     </AmountOfCoffeeContainer>
   );

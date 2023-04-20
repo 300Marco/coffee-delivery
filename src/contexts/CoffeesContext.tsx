@@ -28,12 +28,11 @@ export function CoffeesContextProvider({
   children,
 }: CoffeesContextProviderProps) {
   const [quantityCoffee, setQuantityCoffee] = useState(1);
+  const [coffee, setCoffee] = useState<CoffeesProps[]>([]);
 
   function getQuantityAmount(value: number) {
     setQuantityCoffee(value);
   }
-
-  const [coffee, setCoffee] = useState<CoffeesProps[]>([]);
 
   function coffeeList(id: string) {
     const selectedCoffee: CoffeesProps = coffeeDatabase.find(
