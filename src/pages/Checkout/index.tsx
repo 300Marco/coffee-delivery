@@ -133,7 +133,10 @@ export function Checkout() {
                     <ProductDetails>
                       <span>{coffee.title}</span>
                       <div>
-                        <AmountOfCoffee />
+                        <AmountOfCoffee
+                          quantityCheckout={coffee.quantity}
+                          idCheckout={coffee.id}
+                        />
 
                         <button>
                           <Trash size={16} /> Remover

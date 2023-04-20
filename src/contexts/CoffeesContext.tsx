@@ -8,7 +8,7 @@ interface CoffeesProps {
   title: string;
   paragraph: string;
   price: number;
-  quantity: number;
+  quantity: number | undefined;
 }
 
 interface CoffeesContextType {
@@ -49,8 +49,6 @@ export function CoffeesContextProvider({
       setQuantityCoffee(1);
     }
   }
-
-  console.log(coffee);
 
   return (
     <CoffeesContext.Provider
