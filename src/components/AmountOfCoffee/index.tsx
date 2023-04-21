@@ -1,7 +1,9 @@
-import { Minus, Plus } from '@phosphor-icons/react';
-import { AmountOfCoffeeContainer } from './styles';
 import { useContext, useEffect, useState } from 'react';
+import { Minus, Plus } from '@phosphor-icons/react';
+
 import { CoffeesContext } from '../../contexts/CoffeesContext';
+
+import { AmountOfCoffeeContainer } from './styles';
 
 interface CheckoutDataProps {
   quantityCheckout?: number;
@@ -15,70 +17,68 @@ export function AmountOfCoffee({
   const { coffee, getQuantityAmount } = useContext(CoffeesContext);
 
   let [alterQuantityCheckout, setAlterQuantityCheckout] = useState(0);
+  let [quantity, setQuantity] = useState(1);
 
   const [mount, setMount] = useState(false); // State to prevent further executions of useEffect
 
-  let [quantity, setQuantity] = useState(1);
+  useEffect(() => {
+    if (!mount) {
+      setMount(true);
 
-  function updateTotalPriceCoffee() {
+      if (quantityCheckout) setAlterQuantityCheckout(quantityCheckout);
+    }
+  }, [quantityCheckout, mount]);
+
+  function updateTotalPriceCoffee(quantity: number) {
     coffee.map((coffee) => {
       if (idCheckout === coffee.id) {
-        return (coffee.totalPrice = coffee.price * alterQuantityCheckout);
+        coffee.totalPrice = coffee.price * quantity;
+
+        return coffee.totalPrice;
       } else {
         return coffee;
       }
     });
   }
 
-  function handleRemoveCoffee() {
-    if (quantity > 1) {
+  function handleRemoveQuantity() {
+    if (alterQuantityCheckout > 1) {
       setQuantity((quantity -= 1));
       getQuantityAmount(quantity);
-    }
 
-    if (alterQuantityCheckout > 1) {
       setAlterQuantityCheckout((alterQuantityCheckout -= 1));
-      updateTotalPriceCoffee();
+      updateTotalPriceCoffee(alterQuantityCheckout);
     }
   }
 
-  function handleAddCoffee() {
+  function handleAddQuantity() {
     setQuantity((quantity += 1));
     getQuantityAmount(quantity);
 
     setAlterQuantityCheckout((alterQuantityCheckout += 1));
-    updateTotalPriceCoffee();
+
+    updateTotalPriceCoffee(alterQuantityCheckout);
   }
 
   coffee.map((coffee) => {
     if (idCheckout === coffee.id) {
-      coffee.totalPrice = coffee.price * alterQuantityCheckout;
+      coffee.quantity = alterQuantityCheckout;
 
-      return (coffee.quantity = alterQuantityCheckout);
+      return coffee.quantity;
     } else {
       return coffee;
     }
   });
 
-  useEffect(() => {
-    if (!mount) {
-      setMount(true);
-
-      if (quantityCheckout) {
-        setAlterQuantityCheckout(quantityCheckout);
-      }
-    }
-  }, [quantityCheckout, mount]);
-
   return (
     <AmountOfCoffeeContainer>
-      <Minus size={14} weight="bold" onClick={handleRemoveCoffee} />
+      <Minus size={14} weight="bold" onClick={handleRemoveQuantity} />
       {quantityCheckout ? (
         <span>{alterQuantityCheckout}</span>
       ) : (
         <span>{quantity}</span>
       )}
-      <Plus size={14} weight="bold" onClick={handleAddCoffee} />
+      <Plus size={14} weight="bold" onClick={handleAddQuantity} />
     </AmountOfCoffeeContainer>
   );
 }

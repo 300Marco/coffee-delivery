@@ -45,6 +45,9 @@ export function CoffeesContextProvider({
     if (checkDuplicateCoffees === false) {
       selectedCoffee.quantity = quantityCoffee;
 
+      selectedCoffee.totalPrice =
+        selectedCoffee.price * selectedCoffee.quantity;
+
       setCoffee((state) => [...state, selectedCoffee]);
       setQuantityCoffee(1);
     }
