@@ -271,33 +271,6 @@ export const Divider = styled.span`
   margin: 1.5rem 0;
 `;
 
-export const PurchaseDetails = styled.div`
-  margin-bottom: 1.5rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-
-  div:not(:last-child) {
-    display: flex;
-    justify-content: space-between;
-
-    span:first-child {
-      font-size: 0.875rem;
-    }
-  }
-
-  div:last-child {
-    display: flex;
-    justify-content: space-between;
-
-    span {
-      font-size: 1.25rem;
-      font-weight: 700;
-    }
-  }
-`;
-
 export const ConfirmOrderButton = styled.button`
   width: 100%;
   height: 2.875rem;

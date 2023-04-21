@@ -143,6 +143,7 @@ export function Checkout() {
                         </button>
                       </div>
                     </ProductDetails>
+
                     <TotalPriceCoffee>
                       R${' '}
                       {coffee.totalPrice.toLocaleString('pt-br', {
