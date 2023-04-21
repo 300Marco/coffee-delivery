@@ -42,7 +42,7 @@ export function AmountOfCoffee({
   }
 
   function handleRemoveQuantity() {
-    if (alterQuantityCheckout > 1) {
+    if (alterQuantityCheckout > 1 || quantity > 1) {
       setQuantity((quantity -= 1));
       getQuantityAmount(quantity);
 

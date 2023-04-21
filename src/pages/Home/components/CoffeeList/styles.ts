@@ -75,7 +75,7 @@ export const BuyContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  span {
+  span:nth-child(1) {
     font-size: 0.875rem;
 
     span {
