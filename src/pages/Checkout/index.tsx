@@ -31,7 +31,11 @@ import {
 } from './styles';
 
 export function Checkout() {
-  const { coffee } = useContext(CoffeesContext);
+  const { coffee, updateCoffeeList } = useContext(CoffeesContext);
+
+  function removeCoffee(id: string) {
+    updateCoffeeList(id);
+  }
 
   return (
     <CheckoutContainer>
@@ -138,7 +142,11 @@ export function Checkout() {
                           idCheckout={coffee.id}
                         />
 
-                        <button>
+                        <button
+                          onClick={() => {
+                            removeCoffee(coffee.id);
+                          }}
+                        >
                           <Trash size={16} /> Remover
                         </button>
                       </div>
@@ -160,23 +168,6 @@ export function Checkout() {
           )}
 
           <TotalOrderBalance />
-
-          {/* <PurchaseDetails>
-            <div>
-              <span>Total de Itens</span>
-              <span>R$ 19,80</span>
-            </div>
-
-            <div>
-              <span>Entrega</span>
-              <span>R$ 3,50</span>
-            </div>
-
-            <div>
-              <span>Total</span>
-              <span>R$ 23,30</span>
-            </div>
-          </PurchaseDetails> */}
 
           <ConfirmOrderButton>Confirmar pedido</ConfirmOrderButton>
         </ProductCard>

@@ -17,6 +17,7 @@ interface CoffeesContextType {
   coffeeDatabase: CoffeesProps[];
   coffeeList: (id: string) => void;
   getQuantityAmount: (value: number) => void;
+  updateCoffeeList: (id: string) => void;
 }
 
 export const CoffeesContext = createContext({} as CoffeesContextType);
@@ -53,6 +54,15 @@ export function CoffeesContextProvider({
     }
   }
 
+  function updateCoffeeList(id: string) {
+    const removeSelectedCoffee = coffee.filter((coffee) => {
+      return coffee.id !== id;
+    });
+
+    setCoffee(removeSelectedCoffee);
+    setQuantityCoffee(1);
+  }
+
   return (
     <CoffeesContext.Provider
       value={{
@@ -60,6 +70,7 @@ export function CoffeesContextProvider({
         coffeeList,
         coffeeDatabase,
         getQuantityAmount,
+        updateCoffeeList,
       }}
     >
       {children}
