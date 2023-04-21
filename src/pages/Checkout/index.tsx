@@ -11,6 +11,7 @@ import {
 
 import { CoffeesContext } from '../../contexts/CoffeesContext';
 import { AmountOfCoffee } from '../../components/AmountOfCoffee';
+import { TotalOrderBalance } from './components/TotalOrderBalance';
 
 import {
   CheckoutContainer,
@@ -26,7 +27,6 @@ import {
   TotalPriceCoffee,
   ProductDetails,
   Divider,
-  PurchaseDetails,
   ConfirmOrderButton,
 } from './styles';
 
@@ -145,7 +145,7 @@ export function Checkout() {
                     </ProductDetails>
                     <TotalPriceCoffee>
                       R${' '}
-                      {coffee.price.toLocaleString('pt-br', {
+                      {coffee.totalPrice.toLocaleString('pt-br', {
                         minimumFractionDigits: 2,
                       })}
                     </TotalPriceCoffee>
@@ -158,7 +158,9 @@ export function Checkout() {
             <NoCoffee>Nenhum café selecionado</NoCoffee>
           )}
 
-          <PurchaseDetails>
+          <TotalOrderBalance />
+
+          {/* <PurchaseDetails>
             <div>
               <span>Total de Itens</span>
               <span>R$ 19,80</span>
@@ -173,7 +175,8 @@ export function Checkout() {
               <span>Total</span>
               <span>R$ 23,30</span>
             </div>
-          </PurchaseDetails>
+          </PurchaseDetails> */}
+
           <ConfirmOrderButton>Confirmar pedido</ConfirmOrderButton>
         </ProductCard>
       </section>

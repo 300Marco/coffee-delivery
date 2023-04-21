@@ -20,6 +20,16 @@ export function AmountOfCoffee({
 
   let [quantity, setQuantity] = useState(1);
 
+  function updateTotalPriceCoffee() {
+    coffee.map((coffee) => {
+      if (idCheckout === coffee.id) {
+        return (coffee.totalPrice = coffee.price * alterQuantityCheckout);
+      } else {
+        return coffee;
+      }
+    });
+  }
+
   function handleRemoveCoffee() {
     if (quantity > 1) {
       setQuantity((quantity -= 1));
@@ -28,6 +38,7 @@ export function AmountOfCoffee({
 
     if (alterQuantityCheckout > 1) {
       setAlterQuantityCheckout((alterQuantityCheckout -= 1));
+      updateTotalPriceCoffee();
     }
   }
 
@@ -36,10 +47,13 @@ export function AmountOfCoffee({
     getQuantityAmount(quantity);
 
     setAlterQuantityCheckout((alterQuantityCheckout += 1));
+    updateTotalPriceCoffee();
   }
 
   coffee.map((coffee) => {
     if (idCheckout === coffee.id) {
+      coffee.totalPrice = coffee.price * alterQuantityCheckout;
+
       return (coffee.quantity = alterQuantityCheckout);
     } else {
       return coffee;

@@ -9,6 +9,7 @@ interface CoffeesProps {
   paragraph: string;
   price: number;
   quantity: number | undefined;
+  totalPrice: number;
 }
 
 interface CoffeesContextType {
