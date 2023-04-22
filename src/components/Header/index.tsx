@@ -40,7 +40,7 @@ export function Header() {
         <NavLink to="/checkout">
           <NavCart title="Ir para Checkout">
             <ShoppingCart size={22} weight="fill" />
-            <ItemsCount>{amountCoffees}</ItemsCount>
+            {amountCoffees > 0 && <ItemsCount>{amountCoffees}</ItemsCount>}
           </NavCart>
         </NavLink>
       </nav>
