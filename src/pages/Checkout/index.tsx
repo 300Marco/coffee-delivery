@@ -1,4 +1,5 @@
 // import { useContext } from 'react';
+import { useForm } from 'react-hook-form';
 
 import {
   Bank,
@@ -24,18 +25,22 @@ import {
 import { ProductCard } from './components/ProductCard';
 
 export function Checkout() {
-  // const { coffee, updateCoffeeList } = useContext(CoffeesContext);
+  const { register, handleSubmit } = useForm();
 
-  // function removeCoffee(id: string) {
-  //   updateCoffeeList(id);
-  // }
+  function handleDeliveryAddress(data: any) {
+    console.log(data);
+  }
 
   return (
     <CheckoutContainer>
       <section>
         <TitleSection>Complete seu pedido</TitleSection>
 
-        <form action="" id="myForm">
+        <form
+          action=""
+          id="myForm"
+          onSubmit={handleSubmit(handleDeliveryAddress)}
+        >
           <FormContainer>
             <FormBox>
               <TitleForm iconColor={'yellow'}>
@@ -50,57 +55,51 @@ export function Checkout() {
 
               <FormFields>
                 <input
-                  name="cep"
                   type="number"
                   placeholder="CEP"
                   min={1}
-                  required
+                  {...register('cep', { valueAsNumber: true })}
                 />
                 <input
-                  name="road"
                   type="text"
                   placeholder="Rua"
                   min={1}
-                  required
+                  {...register('road')}
                 />
 
                 <div>
                   <input
-                    name="number"
                     type="text"
                     placeholder="Número"
                     min={1}
-                    required
+                    {...register('number')}
                   />
                   <input
-                    name="complement"
                     type="text"
                     placeholder="Complemento"
+                    {...register('complement')}
                   />
                   <span>Opcional</span>
                 </div>
 
                 <div>
                   <input
-                    name="neighborhood"
                     type="text"
                     placeholder="Bairro"
                     min={1}
-                    required
+                    {...register('neighborhood')}
                   />
                   <input
-                    name="city"
                     type="text"
                     placeholder="Cidade"
                     min={1}
-                    required
+                    {...register('city')}
                   />
                   <input
-                    name="uf"
                     type="text"
                     placeholder="UF"
                     min={1}
-                    required
+                    {...register('uf')}
                   />
                 </div>
               </FormFields>
