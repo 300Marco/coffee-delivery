@@ -1,5 +1,7 @@
 // import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as zod from 'zod';
 
 import {
   Bank,
@@ -13,6 +15,8 @@ import {
 // import { AmountOfCoffee } from '../../components/AmountOfCoffee';
 // import { TotalOrderBalance } from './components/TotalOrderBalance';
 
+import { ProductCard } from './components/ProductCard';
+
 import {
   CheckoutContainer,
   FormBox,
@@ -22,12 +26,29 @@ import {
   FormFields,
   FormOfPayment,
 } from './styles';
-import { ProductCard } from './components/ProductCard';
+
+const deliveryAddressValidationSchema = zod.object({
+  cep: zod.number().min(8, 'Informe corretamente o CEP com 8 dígitos'),
+  road: zod.string().min(3, 'Informe o nome da rua'),
+  number: zod.number().min(1).max(10),
+  complement: zod.string().min(1).max(100).optional(),
+  neighborhood: zod.string().min(1).max(30),
+  city: zod.string().min(1).max(28),
+  uf: zod.string().min(2).max(2),
+});
+
+type deliveryAddress = zod.infer<typeof deliveryAddressValidationSchema>;
 
 export function Checkout() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<deliveryAddress>({
+    resolver: zodResolver(deliveryAddressValidationSchema),
+  });
 
-  function handleDeliveryAddress(data: any) {
+  function handleDeliveryAddress(data: deliveryAddress) {
     console.log(data);
   }
 
@@ -60,6 +81,7 @@ export function Checkout() {
                   min={1}
                   {...register('cep', { valueAsNumber: true })}
                 />
+
                 <input
                   type="text"
                   placeholder="Rua"
