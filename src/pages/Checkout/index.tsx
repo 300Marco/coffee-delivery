@@ -28,13 +28,22 @@ import {
 } from './styles';
 
 const deliveryAddressValidationSchema = zod.object({
-  cep: zod.number().min(8, 'Informe corretamente o CEP com 8 dígitos'),
+  cep: zod
+    .string()
+    .min(9, 'Informa corretamente o CEP com 8 dígitos')
+    .max(9, 'Informe corretamente o CEP com 8 dígitos'),
   road: zod.string().min(3, 'Informe o nome da rua'),
-  number: zod.number().min(1).max(10),
-  complement: zod.string().min(1).max(100).optional(),
-  neighborhood: zod.string().min(1).max(30),
-  city: zod.string().min(1).max(28),
-  uf: zod.string().min(2).max(2),
+  number: zod.string().min(1),
+  complement: zod.string().max(100).optional(),
+  neighborhood: zod
+    .string()
+    .min(3, 'O bairro precisa de no mínimo 3 caracteres')
+    .max(30),
+  city: zod
+    .string()
+    .min(3, 'A cidade precisa de no mínimo 3 caracteres')
+    .max(28),
+  uf: zod.string().min(2, 'O UF precisa de 2 caracteres').max(2),
 });
 
 type deliveryAddress = zod.infer<typeof deliveryAddressValidationSchema>;
@@ -43,14 +52,28 @@ export function Checkout() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm<deliveryAddress>({
     resolver: zodResolver(deliveryAddressValidationSchema),
+    defaultValues: {
+      cep: '',
+      road: '',
+      number: '',
+      complement: '',
+      neighborhood: '',
+      city: '',
+      uf: '',
+    },
   });
 
   function handleDeliveryAddress(data: deliveryAddress) {
     console.log(data);
   }
+
+  const cepMask = watch('cep')
+    .replace(/\D/g, '')
+    .replace(/(\d{5})(\d)/, '$1-$2');
 
   return (
     <CheckoutContainer>
@@ -76,31 +99,33 @@ export function Checkout() {
 
               <FormFields>
                 <input
-                  type="number"
+                  type="string"
                   placeholder="CEP"
-                  min={1}
-                  {...register('cep', { valueAsNumber: true })}
+                  value={cepMask}
+                  {...register('cep')}
                 />
+                {errors.cep && <span>{errors.cep.message}</span>}
 
-                <input
-                  type="text"
-                  placeholder="Rua"
-                  min={1}
-                  {...register('road')}
-                />
+                <input type="text" placeholder="Rua" {...register('road')} />
+                {errors.road && <span>{errors.road.message}</span>}
 
                 <div>
                   <input
                     type="text"
                     placeholder="Número"
-                    min={1}
                     {...register('number')}
                   />
+                  {errors.number && <span>{errors.number.message}</span>}
+
                   <input
                     type="text"
                     placeholder="Complemento"
                     {...register('complement')}
                   />
+                  {errors.complement && (
+                    <span>{errors.complement.message}</span>
+                  )}
+
                   <span>Opcional</span>
                 </div>
 
@@ -108,21 +133,21 @@ export function Checkout() {
                   <input
                     type="text"
                     placeholder="Bairro"
-                    min={1}
                     {...register('neighborhood')}
                   />
+                  {errors.neighborhood && (
+                    <span>{errors.neighborhood.message}</span>
+                  )}
+
                   <input
                     type="text"
                     placeholder="Cidade"
-                    min={1}
                     {...register('city')}
                   />
-                  <input
-                    type="text"
-                    placeholder="UF"
-                    min={1}
-                    {...register('uf')}
-                  />
+                  {errors.city && <span>{errors.city.message}</span>}
+
+                  <input type="text" placeholder="UF" {...register('uf')} />
+                  {errors.uf && <span>{errors.uf.message}</span>}
                 </div>
               </FormFields>
             </FormBox>
