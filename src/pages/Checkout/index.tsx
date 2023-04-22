@@ -25,6 +25,10 @@ import {
   TitleSection,
   FormFields,
   FormOfPayment,
+  FirstDivDisplay,
+  SecondaryDivDisplay,
+  TagOptional,
+  DivDisplay,
 } from './styles';
 
 const deliveryAddressValidationSchema = zod.object({
@@ -33,17 +37,11 @@ const deliveryAddressValidationSchema = zod.object({
     .min(9, 'Informa corretamente o CEP com 8 dígitos')
     .max(9, 'Informe corretamente o CEP com 8 dígitos'),
   road: zod.string().min(3, 'Informe o nome da rua'),
-  number: zod.string().min(1),
+  number: zod.string().min(1, 'Informe no mínimo 1 caractere'),
   complement: zod.string().max(100).optional(),
-  neighborhood: zod
-    .string()
-    .min(3, 'O bairro precisa de no mínimo 3 caracteres')
-    .max(30),
-  city: zod
-    .string()
-    .min(3, 'A cidade precisa de no mínimo 3 caracteres')
-    .max(28),
-  uf: zod.string().min(2, 'O UF precisa de 2 caracteres').max(2),
+  neighborhood: zod.string().min(3, 'Informe no mínimo 3 caracteres').max(30),
+  city: zod.string().min(3, 'Informe no mínimo 3 caracteres').max(28),
+  uf: zod.string().min(2, 'Informe 2 caracteres').max(2),
 });
 
 type deliveryAddress = zod.infer<typeof deliveryAddressValidationSchema>;
@@ -98,7 +96,21 @@ export function Checkout() {
               </TitleForm>
 
               <FormFields>
-                <input
+                <DivDisplay>
+                  <input
+                    type="string"
+                    placeholder="CEP"
+                    value={cepMask}
+                    {...register('cep')}
+                  />
+                  {errors.cep && <span>{errors.cep.message}</span>}
+                </DivDisplay>
+
+                <DivDisplay>
+                  <input type="text" placeholder="Rua" {...register('road')} />
+                  {errors.road && <span>{errors.road.message}</span>}
+                </DivDisplay>
+                {/* <input
                   type="string"
                   placeholder="CEP"
                   value={cepMask}
@@ -107,15 +119,24 @@ export function Checkout() {
                 {errors.cep && <span>{errors.cep.message}</span>}
 
                 <input type="text" placeholder="Rua" {...register('road')} />
-                {errors.road && <span>{errors.road.message}</span>}
+                {errors.road && <span>{errors.road.message}</span>} */}
 
-                <div>
-                  <input
+                <FirstDivDisplay>
+                  {/* <input
                     type="text"
                     placeholder="Número"
                     {...register('number')}
                   />
-                  {errors.number && <span>{errors.number.message}</span>}
+                  {errors.number && <span>{errors.number.message}</span>} */}
+
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Número"
+                      {...register('number')}
+                    />
+                    {errors.number && <span>{errors.number.message}</span>}
+                  </div>
 
                   <input
                     type="text"
@@ -126,29 +147,35 @@ export function Checkout() {
                     <span>{errors.complement.message}</span>
                   )}
 
-                  <span>Opcional</span>
-                </div>
+                  <TagOptional>Opcional</TagOptional>
+                </FirstDivDisplay>
 
-                <div>
-                  <input
-                    type="text"
-                    placeholder="Bairro"
-                    {...register('neighborhood')}
-                  />
-                  {errors.neighborhood && (
-                    <span>{errors.neighborhood.message}</span>
-                  )}
+                <SecondaryDivDisplay>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Bairro"
+                      {...register('neighborhood')}
+                    />
+                    {errors.neighborhood && (
+                      <span>{errors.neighborhood.message}</span>
+                    )}
+                  </div>
 
-                  <input
-                    type="text"
-                    placeholder="Cidade"
-                    {...register('city')}
-                  />
-                  {errors.city && <span>{errors.city.message}</span>}
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Cidade"
+                      {...register('city')}
+                    />
+                    {errors.city && <span>{errors.city.message}</span>}
+                  </div>
 
-                  <input type="text" placeholder="UF" {...register('uf')} />
-                  {errors.uf && <span>{errors.uf.message}</span>}
-                </div>
+                  <div>
+                    <input type="text" placeholder="UF" {...register('uf')} />
+                    {errors.uf && <span>{errors.uf.message}</span>}
+                  </div>
+                </SecondaryDivDisplay>
               </FormFields>
             </FormBox>
 

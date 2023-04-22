@@ -96,6 +96,7 @@ export const FormFields = styled.section`
 
   input[name='complement'] {
     flex: 1;
+    height: 2.6875rem;
   }
 
   input[name='city'] {
@@ -105,21 +106,62 @@ export const FormFields = styled.section`
   input[name='uf'] {
     width: 3.75rem;
   }
+`;
+
+export const DivDisplay = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  span {
+    color: ${(props) => props.theme['red-alert']};
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+  }
+`;
+
+const BaseDivDisplay = styled.div`
+  display: flex;
+  gap: 0.75rem;
+
+  span {
+    color: ${(props) => props.theme['red-alert']};
+  }
+`;
+
+export const FirstDivDisplay = styled(BaseDivDisplay)`
+  /* background-color: red; */
+  position: relative;
 
   div {
-    position: relative;
-
     display: flex;
-    gap: 0.75rem;
+    flex-direction: column;
 
     span {
-      font-size: 0.75rem;
-      font-style: italic;
-      color: ${(props) => props.theme['gray-600']};
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
+    }
+  }
+`;
 
-      position: absolute;
-      top: 14px;
-      right: 14px;
+export const TagOptional = styled.span`
+  position: absolute;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: ${(props) => props.theme['gray-600']} !important;
+  top: 14px;
+  right: 14px;
+`;
+
+export const SecondaryDivDisplay = styled(BaseDivDisplay)`
+  /* background-color: blue; */
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      margin-top: 0.5rem;
+      font-size: 0.875rem;
     }
   }
 `;
