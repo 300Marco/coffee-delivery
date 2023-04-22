@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 
 import {
   Bank,
@@ -6,12 +6,11 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
-  Trash,
 } from '@phosphor-icons/react';
 
-import { CoffeesContext } from '../../contexts/CoffeesContext';
-import { AmountOfCoffee } from '../../components/AmountOfCoffee';
-import { TotalOrderBalance } from './components/TotalOrderBalance';
+// import { CoffeesContext } from '../../contexts/CoffeesContext';
+// import { AmountOfCoffee } from '../../components/AmountOfCoffee';
+// import { TotalOrderBalance } from './components/TotalOrderBalance';
 
 import {
   CheckoutContainer,
@@ -21,28 +20,22 @@ import {
   TitleSection,
   FormFields,
   FormOfPayment,
-  ProductCard,
-  CardCoffee,
-  NoCoffee,
-  TotalPriceCoffee,
-  ProductDetails,
-  Divider,
-  ConfirmOrderButton,
 } from './styles';
+import { ProductCard } from './components/ProductCard';
 
 export function Checkout() {
-  const { coffee, updateCoffeeList } = useContext(CoffeesContext);
+  // const { coffee, updateCoffeeList } = useContext(CoffeesContext);
 
-  function removeCoffee(id: string) {
-    updateCoffeeList(id);
-  }
+  // function removeCoffee(id: string) {
+  //   updateCoffeeList(id);
+  // }
 
   return (
     <CheckoutContainer>
       <section>
         <TitleSection>Complete seu pedido</TitleSection>
 
-        <form action="">
+        <form action="" id="myForm">
           <FormContainer>
             <FormBox>
               <TitleForm iconColor={'yellow'}>
@@ -56,8 +49,20 @@ export function Checkout() {
               </TitleForm>
 
               <FormFields>
-                <input name="cep" type="number" placeholder="CEP" min={1} />
-                <input name="road" type="text" placeholder="Rua" min={1} />
+                <input
+                  name="cep"
+                  type="number"
+                  placeholder="CEP"
+                  min={1}
+                  required
+                />
+                <input
+                  name="road"
+                  type="text"
+                  placeholder="Rua"
+                  min={1}
+                  required
+                />
 
                 <div>
                   <input
@@ -65,6 +70,7 @@ export function Checkout() {
                     type="text"
                     placeholder="Número"
                     min={1}
+                    required
                   />
                   <input
                     name="complement"
@@ -80,9 +86,22 @@ export function Checkout() {
                     type="text"
                     placeholder="Bairro"
                     min={1}
+                    required
                   />
-                  <input name="city" type="text" placeholder="Cidade" min={1} />
-                  <input name="uf" type="text" placeholder="UF" min={1} />
+                  <input
+                    name="city"
+                    type="text"
+                    placeholder="Cidade"
+                    min={1}
+                    required
+                  />
+                  <input
+                    name="uf"
+                    type="text"
+                    placeholder="UF"
+                    min={1}
+                    required
+                  />
                 </div>
               </FormFields>
             </FormBox>
@@ -127,7 +146,9 @@ export function Checkout() {
       <section>
         <TitleSection>Cafés selecionados</TitleSection>
 
-        <ProductCard>
+        <ProductCard />
+
+        {/* <ProductCard>
           {coffee.length > 0 ? (
             coffee.map((coffee) => {
               return (
@@ -170,7 +191,7 @@ export function Checkout() {
           <TotalOrderBalance />
 
           <ConfirmOrderButton>Confirmar pedido</ConfirmOrderButton>
-        </ProductCard>
+        </ProductCard> */}
       </section>
     </CheckoutContainer>
   );
