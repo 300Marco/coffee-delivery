@@ -1,4 +1,5 @@
-// import { useContext } from 'react';
+import { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
@@ -10,10 +11,6 @@ import {
   MapPinLine,
   Money,
 } from '@phosphor-icons/react';
-
-// import { CoffeesContext } from '../../contexts/CoffeesContext';
-// import { AmountOfCoffee } from '../../components/AmountOfCoffee';
-// import { TotalOrderBalance } from './components/TotalOrderBalance';
 
 import { ProductCard } from './components/ProductCard';
 
@@ -34,14 +31,17 @@ import {
 const deliveryAddressValidationSchema = zod.object({
   cep: zod
     .string()
-    .min(9, 'Informa corretamente o CEP com 8 dígitos')
+    .min(9, 'Informe corretamente o CEP com 8 dígitos')
     .max(9, 'Informe corretamente o CEP com 8 dígitos'),
   road: zod.string().min(3, 'Informe o nome da rua'),
   number: zod.string().min(1, 'Informe no mínimo 1 caractere'),
   complement: zod.string().max(100).optional(),
   neighborhood: zod.string().min(3, 'Informe no mínimo 3 caracteres').max(30),
   city: zod.string().min(3, 'Informe no mínimo 3 caracteres').max(28),
-  uf: zod.string().min(2, 'Informe 2 caracteres').max(2),
+  uf: zod
+    .string()
+    .min(2, 'Informe 2 caracteres')
+    .max(2, 'Informe 2 caracteres'),
 });
 
 type deliveryAddress = zod.infer<typeof deliveryAddressValidationSchema>;
@@ -66,12 +66,41 @@ export function Checkout() {
   });
 
   function handleDeliveryAddress(data: deliveryAddress) {
-    console.log(data);
+    // console.log(data);
+    // console.log(getCepData);
   }
 
   const cepMask = watch('cep')
     .replace(/\D/g, '')
     .replace(/(\d{5})(\d)/, '$1-$2');
+  const getCep = cepMask.replace(/[-]/g, '');
+
+  const [getCepData, setGetCepData] = useState<string[] | any>([]);
+
+  register('cep', {
+    onBlur: (e) => {
+      const url = `https://viacep.com.br/ws/${getCep}/json`;
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          const checkCep: boolean =
+            data.cep === undefined && cepMask.length !== 0;
+
+          const deliveryData = {
+            cep: data.cep,
+            road: data.logradouro,
+            neighborhood: data.bairro,
+            city: data.localidade,
+            uf: data.uf,
+            cepValidation: checkCep,
+          };
+
+          setGetCepData(deliveryData);
+        });
+    },
+  });
+
+  const { road, neighborhood, city, uf, cepValidation } = getCepData;
 
   return (
     <CheckoutContainer>
@@ -104,31 +133,20 @@ export function Checkout() {
                     {...register('cep')}
                   />
                   {errors.cep && <span>{errors.cep.message}</span>}
+                  {cepValidation && <span>CEP informado inválido</span>}
                 </DivDisplay>
 
                 <DivDisplay>
-                  <input type="text" placeholder="Rua" {...register('road')} />
+                  <input
+                    type="text"
+                    placeholder="Rua"
+                    {...register('road')}
+                    value={road}
+                  />
                   {errors.road && <span>{errors.road.message}</span>}
                 </DivDisplay>
-                {/* <input
-                  type="string"
-                  placeholder="CEP"
-                  value={cepMask}
-                  {...register('cep')}
-                />
-                {errors.cep && <span>{errors.cep.message}</span>}
-
-                <input type="text" placeholder="Rua" {...register('road')} />
-                {errors.road && <span>{errors.road.message}</span>} */}
 
                 <FirstDivDisplay>
-                  {/* <input
-                    type="text"
-                    placeholder="Número"
-                    {...register('number')}
-                  />
-                  {errors.number && <span>{errors.number.message}</span>} */}
-
                   <div>
                     <input
                       type="text"
@@ -156,6 +174,7 @@ export function Checkout() {
                       type="text"
                       placeholder="Bairro"
                       {...register('neighborhood')}
+                      value={neighborhood}
                     />
                     {errors.neighborhood && (
                       <span>{errors.neighborhood.message}</span>
@@ -167,12 +186,18 @@ export function Checkout() {
                       type="text"
                       placeholder="Cidade"
                       {...register('city')}
+                      value={city}
                     />
                     {errors.city && <span>{errors.city.message}</span>}
                   </div>
 
                   <div>
-                    <input type="text" placeholder="UF" {...register('uf')} />
+                    <input
+                      type="text"
+                      placeholder="UF"
+                      {...register('uf')}
+                      value={uf}
+                    />
                     {errors.uf && <span>{errors.uf.message}</span>}
                   </div>
                 </SecondaryDivDisplay>
