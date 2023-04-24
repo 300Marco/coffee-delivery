@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const SuccessContainer = styled.section`
   width: 72rem;
   padding: 0 1rem 1rem;
-  margin-top: 5rem;
+  margin-top: 11.75rem;
 
   display: flex;
   flex-direction: column;

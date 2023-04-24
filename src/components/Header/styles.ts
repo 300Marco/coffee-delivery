@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
+  position: fixed;
   width: 100%;
   max-width: 72rem;
   padding: 2rem 1rem;
+  background-color: ${(props) => props.theme['white-300']};
 
   display: flex;
   align-items: center;

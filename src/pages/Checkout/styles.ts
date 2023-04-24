@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CheckoutContainer = styled.main`
-  margin-top: 2.5rem;
+  margin-top: 9.25rem;
   width: 100%;
   max-width: 72rem;
   padding: 0 1rem 2rem;
