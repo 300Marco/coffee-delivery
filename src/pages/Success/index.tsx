@@ -1,5 +1,9 @@
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react';
+
+import { useContext } from 'react';
+import { DeliveryContext } from '../../contexts/DeliveryContext';
 import motorbike from '../../assets/illustration-motorbike.svg';
+
 import {
   BoxDeliveryBackground,
   BoxDeliveryInformation,
@@ -12,6 +16,10 @@ import {
 } from './styles';
 
 export function Success() {
+  const { delivery } = useContext(DeliveryContext);
+
+  const { road, number, neighborhood, city, uf, payment } = delivery[0];
+
   return (
     <SuccessContainer>
       <MessageBox>
@@ -29,9 +37,14 @@ export function Success() {
 
               <DeliveryData>
                 <span>
-                  Entrega em <strong>Rua João Daniel Martinelli, 102</strong>
+                  Entrega em{' '}
+                  <strong>
+                    {road}, {number}
+                  </strong>
                 </span>
-                <span>Farrapos - Porto Alegre, RS</span>
+                <span>
+                  {neighborhood} - {city}, {uf}
+                </span>
               </DeliveryData>
             </FinalData>
 
@@ -56,7 +69,7 @@ export function Success() {
               <DeliveryData>
                 <span>Pagamento na entrega</span>
                 <span>
-                  <strong>Cartão de Crédito</strong>
+                  <strong>{payment}</strong>
                 </span>
               </DeliveryData>
             </FinalData>

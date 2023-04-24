@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -14,6 +14,7 @@ import {
 } from '@phosphor-icons/react';
 
 import { ProductCard } from './components/ProductCard';
+import { DeliveryContext } from '../../contexts/DeliveryContext';
 
 import {
   CheckoutContainer,
@@ -69,8 +70,10 @@ export function Checkout() {
     },
   });
 
+  const { getDeliveryDetails } = useContext(DeliveryContext);
+
   function handleDeliveryAddress(data: deliveryAddress) {
-    console.log(data);
+    getDeliveryDetails(data);
   }
 
   const cepMask = watch('cep')

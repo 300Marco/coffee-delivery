@@ -6,13 +6,16 @@ import { GlobalStyle } from './styles/global';
 import { Router } from './Router';
 
 import { CoffeesContextProvider } from './contexts/CoffeesContext';
+import { DeliveryContextProvider } from './contexts/DeliveryContext';
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
         <CoffeesContextProvider>
-          <Router />
+          <DeliveryContextProvider>
+            <Router />
+          </DeliveryContextProvider>
         </CoffeesContextProvider>
       </BrowserRouter>
 
