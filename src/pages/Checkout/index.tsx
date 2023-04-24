@@ -10,6 +10,7 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
+  WarningCircle,
 } from '@phosphor-icons/react';
 
 import { ProductCard } from './components/ProductCard';
@@ -26,6 +27,7 @@ import {
   SecondaryDivDisplay,
   TagOptional,
   DivDisplay,
+  MessagePaymentError,
 } from './styles';
 
 const deliveryAddressValidationSchema = zod.object({
@@ -42,6 +44,7 @@ const deliveryAddressValidationSchema = zod.object({
     .string()
     .min(2, 'Informe 2 caracteres')
     .max(2, 'Informe 2 caracteres'),
+  payment: zod.string(),
 });
 
 type deliveryAddress = zod.infer<typeof deliveryAddressValidationSchema>;
@@ -51,6 +54,7 @@ export function Checkout() {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<deliveryAddress>({
     resolver: zodResolver(deliveryAddressValidationSchema),
@@ -66,8 +70,7 @@ export function Checkout() {
   });
 
   function handleDeliveryAddress(data: deliveryAddress) {
-    // console.log(data);
-    // console.log(getCepData);
+    console.log(data);
   }
 
   const cepMask = watch('cep')
@@ -75,7 +78,7 @@ export function Checkout() {
     .replace(/(\d{5})(\d)/, '$1-$2');
   const getCep = cepMask.replace(/[-]/g, '');
 
-  const [getCepData, setGetCepData] = useState<string[] | any>([]);
+  const [cepValidation, setCepValidation] = useState<string[] | any>([]);
 
   register('cep', {
     onBlur: (e) => {
@@ -86,21 +89,29 @@ export function Checkout() {
           const checkCep: boolean =
             data.cep === undefined && cepMask.length !== 0;
 
-          const deliveryData = {
-            cep: data.cep,
-            road: data.logradouro,
-            neighborhood: data.bairro,
-            city: data.localidade,
-            uf: data.uf,
-            cepValidation: checkCep,
-          };
+          // const deliveryData = {
+          //   addressCep: data.cep,
+          //   addressRoad: data.logradouro,
+          //   addressNeighborhood: data.bairro,
+          //   addressCity: data.localidade,
+          //   addressUf: data.uf,
+          //   addressCepValidation: checkCep,
+          // };
 
-          setGetCepData(deliveryData);
+          // console.log(deliveryData.addressRoad);
+          setValue('road', data.logradouro);
+          setValue('neighborhood', data.bairro);
+          setValue('city', data.localidade);
+          setValue('uf', data.uf);
+          // setValue('road', deliveryData.addressRoad);
+
+          // setGetCepData(deliveryData);
+          setCepValidation(checkCep);
         });
     },
   });
 
-  const { road, neighborhood, city, uf, cepValidation } = getCepData;
+  // const { road, neighborhood, city, uf, cepValidation } = getCepData;
 
   return (
     <CheckoutContainer>
@@ -133,7 +144,9 @@ export function Checkout() {
                     {...register('cep')}
                   />
                   {errors.cep && <span>{errors.cep.message}</span>}
-                  {cepValidation && <span>CEP informado inválido</span>}
+                  {cepValidation && cepValidation.length !== 0 && (
+                    <span>CEP informado inválido</span>
+                  )}
                 </DivDisplay>
 
                 <DivDisplay>
@@ -141,7 +154,7 @@ export function Checkout() {
                     type="text"
                     placeholder="Rua"
                     {...register('road')}
-                    value={road}
+                    // value={road}
                   />
                   {errors.road && <span>{errors.road.message}</span>}
                 </DivDisplay>
@@ -174,7 +187,7 @@ export function Checkout() {
                       type="text"
                       placeholder="Bairro"
                       {...register('neighborhood')}
-                      value={neighborhood}
+                      // value={neighborhood}
                     />
                     {errors.neighborhood && (
                       <span>{errors.neighborhood.message}</span>
@@ -186,7 +199,7 @@ export function Checkout() {
                       type="text"
                       placeholder="Cidade"
                       {...register('city')}
-                      value={city}
+                      // value={city}
                     />
                     {errors.city && <span>{errors.city.message}</span>}
                   </div>
@@ -196,7 +209,7 @@ export function Checkout() {
                       type="text"
                       placeholder="UF"
                       {...register('uf')}
-                      value={uf}
+                      // value={uf}
                     />
                     {errors.uf && <span>{errors.uf.message}</span>}
                   </div>
@@ -217,20 +230,44 @@ export function Checkout() {
                 </div>
               </TitleForm>
 
+              {errors.payment && (
+                <MessagePaymentError>
+                  <WarningCircle size={16} />
+                  Escolha uma forma de pagamento
+                </MessagePaymentError>
+              )}
               <FormOfPayment>
-                <input type="radio" id="creditCard" name="option" />
+                <input
+                  type="radio"
+                  id="creditCard"
+                  value={'Cartão de Crédito'}
+                  // name="option"
+                  {...register('payment')}
+                />
                 <label htmlFor="creditCard">
                   <CreditCard size={16} />
                   CARTÃO DE CRÉDITO
                 </label>
 
-                <input type="radio" id="debitCard" name="option" />
+                <input
+                  type="radio"
+                  id="debitCard"
+                  value={'Cartão de Débito'}
+                  // name="option"
+                  {...register('payment')}
+                />
                 <label htmlFor="debitCard">
                   <Bank size={16} />
                   CARTÃO DE DÉBITO
                 </label>
 
-                <input type="radio" id="money" name="option" />
+                <input
+                  type="radio"
+                  id="money"
+                  value={'Dinheiro'}
+                  // name="option"
+                  {...register('payment')}
+                />
                 <label htmlFor="money">
                   <Money size={16} />
                   DINHEIRO

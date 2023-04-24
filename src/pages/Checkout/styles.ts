@@ -30,6 +30,16 @@ export const FormBox = styled.div`
   background-color: ${(props) => props.theme['gray-100']};
 `;
 
+export const MessagePaymentError = styled.span`
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: ${(props) => props.theme['red-alert']};
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
 const ICON_COLORS = {
   yellow: 'yellow-500',
   purple: 'purple-300',
