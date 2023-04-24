@@ -1,4 +1,13 @@
+import { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+
 import { Trash } from '@phosphor-icons/react';
+
+import { CoffeesContext } from '../../../../contexts/CoffeesContext';
+import { DeliveryContext } from '../../../../contexts/DeliveryContext';
+import { AmountOfCoffee } from '../../../../components/AmountOfCoffee';
+import { TotalOrderBalance } from '../TotalOrderBalance';
+
 import {
   ProductCardContainer,
   CardCoffee,
@@ -8,13 +17,14 @@ import {
   Divider,
   ConfirmOrderButton,
 } from './styles';
-import { useContext } from 'react';
-import { CoffeesContext } from '../../../../contexts/CoffeesContext';
-import { AmountOfCoffee } from '../../../../components/AmountOfCoffee';
-import { TotalOrderBalance } from '../TotalOrderBalance';
 
 export function ProductCard() {
   const { coffee, updateCoffeeList } = useContext(CoffeesContext);
+  const { delivery } = useContext(DeliveryContext);
+
+  let link: string = '';
+
+  if (delivery.length !== 0) link = '/success';
 
   function removeCoffee(id: string) {
     updateCoffeeList(id);
@@ -66,6 +76,8 @@ export function ProductCard() {
       <ConfirmOrderButton type="submit" form="myForm">
         Confirmar pedido
       </ConfirmOrderButton>
+
+      {link && <Navigate to="/success" />}
     </ProductCardContainer>
   );
 }
