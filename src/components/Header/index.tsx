@@ -21,15 +21,13 @@ export function Header() {
 
   return (
     <HeaderContainer>
-      <NavLink to="/">
-        <span>
-          <SrOnly>Coffee Delivery</SrOnly>
-          <img
-            src={logo}
-            alt="ícone roxo de um copo de café, e do lado tem o nome do site coffee delivery"
-          />
-        </span>
-      </NavLink>
+      <span>
+        <SrOnly>Coffee Delivery</SrOnly>
+        <img
+          src={logo}
+          alt="ícone roxo de um copo de café, e do lado tem o nome do site coffee delivery"
+        />
+      </span>
 
       <nav>
         <NavLocation>
