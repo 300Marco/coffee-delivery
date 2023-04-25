@@ -83,32 +83,41 @@ export function Checkout() {
 
   const [cepValidation, setCepValidation] = useState<string[] | any>([]);
 
+  // register('cep', {
+  //   onBlur: (e) => {
+  //     const url = `https://viacep.com.br/ws/${getCep}/json`;
+  //     fetch(url)
+  //       .then((response) => response.json())
+  //       .then((data) => {
+  //         const checkCep: boolean =
+  //           data.cep === undefined && cepMask.length !== 0;
+  //         setValue('road', data.logradouro);
+  //         setValue('neighborhood', data.bairro);
+  //         setValue('city', data.localidade);
+  //         setValue('uf', data.uf);
+
+  //         setCepValidation(checkCep);
+  //       });
+  //   },
+  // });
+
   register('cep', {
     onBlur: (e) => {
-      const url = `https://viacep.com.br/ws/${getCep}/json`;
+      const url =
+        getCep.length === 8
+          ? `https://viacep.com.br/ws/${getCep}/json`
+          : `https://viacep.com.br/ws/00000000/json`;
+
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
           const checkCep: boolean =
             data.cep === undefined && cepMask.length !== 0;
-
-          // const deliveryData = {
-          //   addressCep: data.cep,
-          //   addressRoad: data.logradouro,
-          //   addressNeighborhood: data.bairro,
-          //   addressCity: data.localidade,
-          //   addressUf: data.uf,
-          //   addressCepValidation: checkCep,
-          // };
-
-          // console.log(deliveryData.addressRoad);
           setValue('road', data.logradouro);
           setValue('neighborhood', data.bairro);
           setValue('city', data.localidade);
           setValue('uf', data.uf);
-          // setValue('road', deliveryData.addressRoad);
 
-          // setGetCepData(deliveryData);
           setCepValidation(checkCep);
         });
     },
