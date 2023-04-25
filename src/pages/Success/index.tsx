@@ -1,7 +1,8 @@
+import { useContext, useEffect, useState } from 'react';
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react';
 
-import { useContext, useEffect, useState } from 'react';
 import { DeliveryContext } from '../../contexts/DeliveryContext';
+import { CoffeesContext } from '../../contexts/CoffeesContext';
 import motorbike from '../../assets/illustration-motorbike.svg';
 
 import {
@@ -14,7 +15,7 @@ import {
   MessageBox,
   SuccessContainer,
 } from './styles';
-import { CoffeesContext } from '../../contexts/CoffeesContext';
+// import { Link, NavLink } from 'react-router-dom';
 
 export function Success() {
   const { delivery } = useContext(DeliveryContext);
@@ -85,6 +86,13 @@ export function Success() {
                 </span>
               </DeliveryData>
             </FinalData>
+
+            {/* <BoxForHomePage>
+              <NavLink to="/">
+                <PlusCircle size={20} />
+                Quero mais café
+              </NavLink>
+            </BoxForHomePage> */}
           </BoxDeliveryInformation>
         </BoxDeliveryBackground>
 
