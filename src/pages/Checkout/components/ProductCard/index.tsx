@@ -16,6 +16,7 @@ import {
   ProductDetails,
   Divider,
   ConfirmOrderButton,
+  ConfirmOrderButtonBlocked,
 } from './styles';
 
 export function ProductCard() {
@@ -73,9 +74,15 @@ export function ProductCard() {
 
       <TotalOrderBalance />
 
-      <ConfirmOrderButton type="submit" form="myForm">
-        Confirmar pedido
-      </ConfirmOrderButton>
+      {coffee.length > 0 ? (
+        <ConfirmOrderButton type="submit" form="myForm">
+          Confirmar pedido
+        </ConfirmOrderButton>
+      ) : (
+        <ConfirmOrderButtonBlocked type="submit" form="myForm" disabled={true}>
+          Confirmar pedido
+        </ConfirmOrderButtonBlocked>
+      )}
 
       {link && <Navigate to="/success" />}
     </ProductCardContainer>

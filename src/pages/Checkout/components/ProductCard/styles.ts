@@ -108,7 +108,7 @@ export const Divider = styled.span`
   margin: 1.5rem 0;
 `;
 
-export const ConfirmOrderButton = styled.button`
+export const BaseConfirmButton = styled.button`
   width: 100%;
   height: 2.875rem;
   border: 0;
@@ -119,13 +119,21 @@ export const ConfirmOrderButton = styled.button`
   text-transform: uppercase;
   transition: background-color 300ms;
   color: ${(props) => props.theme.white};
-  background-color: ${(props) => props.theme['yellow-300']};
 
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const ConfirmOrderButton = styled(BaseConfirmButton)`
+  background-color: ${(props) => props.theme['yellow-300']};
 
   &:hover {
     background-color: ${(props) => props.theme['yellow-500']};
   }
+`;
+
+export const ConfirmOrderButtonBlocked = styled(BaseConfirmButton)`
+  background-color: ${(props) => props.theme['gray-500']};
+  cursor: not-allowed;
 `;
