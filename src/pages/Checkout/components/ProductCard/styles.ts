@@ -6,6 +6,28 @@ export const ProductCardContainer = styled.div`
   background-color: ${(props) => props.theme['gray-100']};
 `;
 
+export const CardCoffeeContainer = styled.div`
+  max-height: 28.5rem;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+  margin-bottom: 8px;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme['gray-500']};
+    border-radius: 20px;
+  }
+`;
+
 export const CardCoffee = styled.div`
   width: 23rem;
 
