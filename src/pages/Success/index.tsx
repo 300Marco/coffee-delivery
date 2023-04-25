@@ -1,6 +1,6 @@
 import { CurrencyDollar, MapPin, Timer } from '@phosphor-icons/react';
 
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { DeliveryContext } from '../../contexts/DeliveryContext';
 import motorbike from '../../assets/illustration-motorbike.svg';
 
@@ -14,11 +14,23 @@ import {
   MessageBox,
   SuccessContainer,
 } from './styles';
+import { CoffeesContext } from '../../contexts/CoffeesContext';
 
 export function Success() {
   const { delivery } = useContext(DeliveryContext);
+  const { resetCoffeeList } = useContext(CoffeesContext);
 
   const { road, number, neighborhood, city, uf, payment } = delivery[0];
+
+  const [mount, setMount] = useState(false);
+
+  useEffect(() => {
+    if (!mount) {
+      setMount(true);
+      console.log('Cheguei aqui');
+      resetCoffeeList();
+    }
+  }, [resetCoffeeList, mount]);
 
   return (
     <SuccessContainer>
