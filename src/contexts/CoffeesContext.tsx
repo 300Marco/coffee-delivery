@@ -16,8 +16,9 @@ interface CoffeesContextType {
   coffee: CoffeesProps[];
   coffeeDatabase: CoffeesProps[];
   coffeeList: (id: string) => void;
-  getQuantityAmount: (value: number) => void;
+  coffeeListQuantity: (value: number) => void;
   updateCoffeeList: (id: string) => void;
+  coffeeQuantityCheckout: (quantity: number, id: string) => void;
 }
 
 export const CoffeesContext = createContext({} as CoffeesContextType);
@@ -32,8 +33,29 @@ export function CoffeesContextProvider({
   const [quantityCoffee, setQuantityCoffee] = useState(1);
   const [coffee, setCoffee] = useState<CoffeesProps[]>([]);
 
-  function getQuantityAmount(value: number) {
-    setQuantityCoffee(value);
+  // Esta função atualiza a quantidade, referente aos cafés da Home Page
+  function coffeeListQuantity(quantity: number) {
+    // setCoffee(
+    //   coffee.map((coffee) => {
+    //     if (coffee.id === id) {
+    //       coffee.totalPrice = coffee.price * quantity;
+    //     }
+    //     return coffee;
+    //   }),
+    // );
+
+    setQuantityCoffee(quantity);
+  }
+
+  // Esta função atualiza o preço total da lista de cafés selecionados
+  function coffeeQuantityCheckout(quantity: number, id: string) {
+    setCoffee(
+      coffee.map((coffee) => {
+        if (coffee.id === id) coffee.totalPrice = coffee.price * quantity;
+
+        return coffee;
+      }),
+    );
   }
 
   function coffeeList(id: string) {
@@ -46,8 +68,7 @@ export function CoffeesContextProvider({
     if (checkDuplicateCoffees === false) {
       selectedCoffee.quantity = quantityCoffee;
 
-      selectedCoffee.totalPrice =
-        selectedCoffee.price * selectedCoffee.quantity;
+      selectedCoffee.totalPrice = selectedCoffee.price * quantityCoffee;
 
       setCoffee((state) => [...state, selectedCoffee]);
       setQuantityCoffee(1);
@@ -69,8 +90,9 @@ export function CoffeesContextProvider({
         coffee,
         coffeeList,
         coffeeDatabase,
-        getQuantityAmount,
+        coffeeListQuantity,
         updateCoffeeList,
+        coffeeQuantityCheckout,
       }}
     >
       {children}
