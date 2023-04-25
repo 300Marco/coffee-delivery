@@ -5,6 +5,7 @@ export const HeaderContainer = styled.header`
   width: 100%;
   max-width: 72rem;
   padding: 2rem 1rem;
+  border-radius: 0 0 12px 12px;
   background-color: ${(props) => props.theme['white-300']};
 
   display: flex;
