@@ -12,6 +12,10 @@ export const CoffeeContainer = styled.section`
     font-weight: 800;
     color: ${(props) => props.theme['gray-800']};
   }
+
+  @media (min-width: 400px) and (max-width: 425px) {
+    padding: 2rem 2rem;
+  }
 `;
 
 export const CoffeeCardContainer = styled.div`
