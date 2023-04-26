@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/devices/device';
 
 export const HeaderContainer = styled.header`
   position: fixed;
@@ -20,6 +21,11 @@ export const HeaderContainer = styled.header`
   nav {
     display: flex;
     gap: 0.75rem;
+  }
+
+  @media ${device.mobileS} {
+    flex-direction: column;
+    gap: 1rem;
   }
 `;
 

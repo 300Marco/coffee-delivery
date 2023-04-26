@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../../../styles/devices/device';
 
 export const CoffeeContainer = styled.section`
   width: 100%;
@@ -20,6 +21,12 @@ export const CoffeeCardContainer = styled.div`
   grid-template-columns: repeat(auto-fit, 16rem);
   column-gap: 2rem;
   row-gap: 2.5rem;
+
+  @media ${device.mobileL} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 export const CoffeeCard = styled.div`

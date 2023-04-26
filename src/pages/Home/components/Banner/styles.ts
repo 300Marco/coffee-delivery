@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import backgroundImageBanner from '../../../../assets/backgroundImageBanner.svg';
+import { device } from '../../../../styles/devices/device';
 
 export const BannerContainer = styled.section`
   width: 100%;
@@ -13,6 +14,10 @@ export const BannerContainer = styled.section`
   display: flex;
   align-items: start;
   justify-content: center;
+
+  @media ${device.mobileL} {
+    flex-direction: column;
+  }
 `;
 
 export const BannerIntro = styled.div`
@@ -33,6 +38,15 @@ export const BannerContent = styled.div`
     width: 29.75rem;
     height: 22.5rem;
   }
+
+  @media ${device.mobileL} {
+    flex-direction: column-reverse;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
 `;
 
 export const BannerInformation = styled.div`
@@ -49,6 +63,12 @@ export const BannerInformation = styled.div`
     font-size: 1.25rem;
     color: ${(props) => props.theme['gray-800']};
   }
+
+  @media ${device.mobileS} {
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
 `;
 
 export const ItemInformation = styled.div`
@@ -63,6 +83,11 @@ export const ItemInformation = styled.div`
     display: flex;
     align-items: center;
     gap: 0.75rem;
+  }
+
+  @media ${device.mobileS} {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
