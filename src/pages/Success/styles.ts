@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/devices/device';
 
 export const SuccessContainer = styled.section`
   width: 72rem;
@@ -8,6 +9,10 @@ export const SuccessContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+
+  @media ${device.laptop} {
+    width: 100%;
+  }
 `;
 
 export const MessageBox = styled.div`
@@ -31,12 +36,26 @@ export const DeliveryInformation = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media ${device.laptop} {
+    flex-direction: column-reverse;
+  }
+
+  @media ${device.mobileL} {
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 const BaseBoxDelivery = styled.div`
   width: 32.875rem;
   border: 0;
   border-radius: 6px 36px 6px 36px;
+
+  @media ${device.mobileL} {
+    width: 100%;
+  }
 `;
 
 export const BoxDeliveryBackground = styled(BaseBoxDelivery)`
