@@ -3,6 +3,7 @@ import { device } from '../../styles/devices/device';
 
 export const HeaderContainer = styled.header`
   position: fixed;
+  z-index: 1;
   width: 100%;
   max-width: 72rem;
   padding: 2rem 1rem;

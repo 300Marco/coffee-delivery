@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../styles/devices/device';
 
 export const CheckoutContainer = styled.main`
   margin-top: 9.25rem;
@@ -8,6 +9,14 @@ export const CheckoutContainer = styled.main`
 
   display: flex;
   gap: 2rem;
+
+  @media ${device.mobileL} {
+    flex-direction: column-reverse;
+  }
+
+  @media ${device.mobileS} {
+    margin-top: 10.5rem;
+  }
 `;
 
 export const TitleSection = styled.span`
@@ -116,6 +125,32 @@ export const FormFields = styled.section`
   input[name='uf'] {
     width: 3.75rem;
   }
+
+  @media ${device.mobileL} {
+    input {
+      /* border: 1px solid green; */
+      /* width: 100% !important; */
+    }
+
+    /* input[name='number'] { */
+    /* width: 100%; */
+    /* } */
+
+    input[name='city'] {
+      width: 14rem;
+    }
+  }
+
+  @media ${device.mobileM} {
+    input[name='neighborhood'],
+    input[name='number'] {
+      width: 100%;
+    }
+
+    input[name='city'] {
+      width: 11rem;
+    }
+  }
 `;
 
 export const DivDisplay = styled.div`
@@ -136,10 +171,13 @@ const BaseDivDisplay = styled.div`
   span {
     color: ${(props) => props.theme['red-alert']};
   }
+
+  @media ${device.mobileL} {
+    flex-wrap: wrap;
+  }
 `;
 
 export const FirstDivDisplay = styled(BaseDivDisplay)`
-  /* background-color: red; */
   position: relative;
 
   div {
@@ -160,6 +198,10 @@ export const TagOptional = styled.span`
   color: ${(props) => props.theme['gray-600']} !important;
   top: 14px;
   right: 14px;
+
+  @media ${device.mobileL} {
+    top: 68px;
+  }
 `;
 
 export const SecondaryDivDisplay = styled(BaseDivDisplay)`
@@ -179,6 +221,10 @@ export const SecondaryDivDisplay = styled(BaseDivDisplay)`
 export const FormOfPayment = styled.section`
   display: flex;
   gap: 0.75rem;
+
+  @media ${device.mobileL} {
+    flex-direction: column-reverse;
+  }
 
   label {
     width: 11.166875rem;
@@ -200,6 +246,11 @@ export const FormOfPayment = styled.section`
 
     svg {
       color: ${(props) => props.theme['purple-300']};
+    }
+
+    @media ${device.mobileL} {
+      width: 100%;
+      justify-content: center;
     }
   }
 

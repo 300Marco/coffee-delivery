@@ -1,9 +1,14 @@
 import styled from 'styled-components';
+import { device } from '../../../../styles/devices/device';
 
 export const ProductCardContainer = styled.div`
   border-radius: 6px 44px 6px 44px;
   padding: 2.5rem;
   background-color: ${(props) => props.theme['gray-100']};
+
+  @media ${device.mobileL} {
+    padding: 2.5rem 1rem;
+  }
 `;
 
 export const CardCoffeeContainer = styled.div`
@@ -39,12 +44,39 @@ export const CardCoffee = styled.div`
     width: 4rem;
     margin-right: 1.25rem;
   }
+
+  @media ${device.mobileL} {
+    position: relative;
+
+    width: 100%;
+  }
+
+  @media ${device.mobileM} {
+    img {
+      margin-right: 0.5rem;
+      width: 3.5rem;
+    }
+  }
+
+  @media ${device.mobileS} {
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      margin-right: 0.5rem;
+      width: 3.5rem;
+    }
+  }
 `;
 
 export const NoCoffee = styled.div`
   width: 23rem;
   padding: 0 0 4rem;
   text-align: center;
+
+  @media ${device.mobileL} {
+    width: 100%;
+  }
 `;
 
 export const ProductDetails = styled.div`
@@ -56,6 +88,10 @@ export const ProductDetails = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
+    @media ${device.mobileS} {
+      gap: 1rem;
+    }
   }
 
   button {
@@ -79,6 +115,10 @@ export const ProductDetails = styled.div`
     svg {
       color: ${(props) => props.theme['purple-300']};
     }
+  }
+
+  @media ${device.mobileS} {
+    align-items: center;
   }
 `;
 
@@ -121,6 +161,17 @@ export const TotalPriceCoffee = styled.span`
   font-weight: 700;
   margin-left: 3.125rem;
   color: ${(props) => props.theme['gray-700']};
+
+  @media ${device.mobileL} {
+    margin-left: initial;
+    flex: 1;
+    text-align: end;
+  }
+
+  @media ${device.mobileS} {
+    position: absolute;
+    right: 0;
+  }
 `;
 
 export const Divider = styled.span`
