@@ -43,7 +43,6 @@ export const CardCoffee = styled.div`
 
   display: flex;
   align-items: start;
-  /* gap: 1.25rem; */
 
   img {
     width: 4rem;

@@ -34,21 +34,10 @@ export function CoffeesContextProvider({
   const [quantityCoffee, setQuantityCoffee] = useState(1);
   const [coffee, setCoffee] = useState<CoffeesProps[]>([]);
 
-  // Esta função atualiza a quantidade, referente aos cafés da Home Page
   function coffeeListQuantity(quantity: number) {
-    // setCoffee(
-    //   coffee.map((coffee) => {
-    //     if (coffee.id === id) {
-    //       coffee.totalPrice = coffee.price * quantity;
-    //     }
-    //     return coffee;
-    //   }),
-    // );
-
     setQuantityCoffee(quantity);
   }
 
-  // Esta função atualiza o preço total da lista de cafés selecionados
   function coffeeQuantityCheckout(quantity: number, id: string) {
     setCoffee(
       coffee.map((coffee) => {

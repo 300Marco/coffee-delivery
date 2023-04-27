@@ -39,11 +39,8 @@ export function DeliveryContextProvider({
       uf: data.uf,
     };
 
-    // console.log(deliveryData);
     setDelivery([deliveryData]);
   }
-
-  //   console.log(delivery);
 
   return (
     <DeliveryContext.Provider value={{ delivery, getDeliveryDetails }}>

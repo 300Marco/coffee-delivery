@@ -80,24 +80,6 @@ export function Checkout() {
 
   const [cepValidation, setCepValidation] = useState<string[] | any>([]);
 
-  // register('cep', {
-  //   onBlur: (e) => {
-  //     const url = `https://viacep.com.br/ws/${getCep}/json`;
-  //     fetch(url)
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         const checkCep: boolean =
-  //           data.cep === undefined && cepMask.length !== 0;
-  //         setValue('road', data.logradouro);
-  //         setValue('neighborhood', data.bairro);
-  //         setValue('city', data.localidade);
-  //         setValue('uf', data.uf);
-
-  //         setCepValidation(checkCep);
-  //       });
-  //   },
-  // });
-
   register('cep', {
     onBlur: (e) => {
       const url =
@@ -119,8 +101,6 @@ export function Checkout() {
         });
     },
   });
-
-  // const { road, neighborhood, city, uf, cepValidation } = getCepData;
 
   return (
     <CheckoutContainer>
@@ -159,12 +139,7 @@ export function Checkout() {
                 </DivDisplay>
 
                 <DivDisplay>
-                  <input
-                    type="text"
-                    placeholder="Rua"
-                    {...register('road')}
-                    // value={road}
-                  />
+                  <input type="text" placeholder="Rua" {...register('road')} />
                   {errors.road && <span>{errors.road.message}</span>}
                 </DivDisplay>
 
@@ -196,7 +171,6 @@ export function Checkout() {
                       type="text"
                       placeholder="Bairro"
                       {...register('neighborhood')}
-                      // value={neighborhood}
                     />
                     {errors.neighborhood && (
                       <span>{errors.neighborhood.message}</span>
@@ -208,18 +182,12 @@ export function Checkout() {
                       type="text"
                       placeholder="Cidade"
                       {...register('city')}
-                      // value={city}
                     />
                     {errors.city && <span>{errors.city.message}</span>}
                   </div>
 
                   <div>
-                    <input
-                      type="text"
-                      placeholder="UF"
-                      {...register('uf')}
-                      // value={uf}
-                    />
+                    <input type="text" placeholder="UF" {...register('uf')} />
                     {errors.uf && <span>{errors.uf.message}</span>}
                   </div>
                 </SecondaryDivDisplay>
@@ -250,7 +218,6 @@ export function Checkout() {
                   type="radio"
                   id="creditCard"
                   value={'Cartão de Crédito'}
-                  // name="option"
                   {...register('payment')}
                 />
                 <label htmlFor="creditCard">
@@ -262,7 +229,6 @@ export function Checkout() {
                   type="radio"
                   id="debitCard"
                   value={'Cartão de Débito'}
-                  // name="option"
                   {...register('payment')}
                 />
                 <label htmlFor="debitCard">
@@ -274,7 +240,6 @@ export function Checkout() {
                   type="radio"
                   id="money"
                   value={'Dinheiro'}
-                  // name="option"
                   {...register('payment')}
                 />
                 <label htmlFor="money">
@@ -291,51 +256,6 @@ export function Checkout() {
         <TitleSection>Cafés selecionados</TitleSection>
 
         <ProductCard />
-
-        {/* <ProductCard>
-          {coffee.length > 0 ? (
-            coffee.map((coffee) => {
-              return (
-                <div key={coffee.id}>
-                  <CardCoffee>
-                    <img src={`./coffees/${coffee.image}`} alt="" />
-                    <ProductDetails>
-                      <span>{coffee.title}</span>
-                      <div>
-                        <AmountOfCoffee
-                          quantityCheckout={coffee.quantity}
-                          idCheckout={coffee.id}
-                        />
-
-                        <button
-                          onClick={() => {
-                            removeCoffee(coffee.id);
-                          }}
-                        >
-                          <Trash size={16} /> Remover
-                        </button>
-                      </div>
-                    </ProductDetails>
-
-                    <TotalPriceCoffee>
-                      R${' '}
-                      {coffee.totalPrice.toLocaleString('pt-br', {
-                        minimumFractionDigits: 2,
-                      })}
-                    </TotalPriceCoffee>
-                  </CardCoffee>
-                  <Divider></Divider>
-                </div>
-              );
-            })
-          ) : (
-            <NoCoffee>Nenhum café selecionado</NoCoffee>
-          )}
-
-          <TotalOrderBalance />
-
-          <ConfirmOrderButton>Confirmar pedido</ConfirmOrderButton>
-        </ProductCard> */}
       </section>
     </CheckoutContainer>
   );

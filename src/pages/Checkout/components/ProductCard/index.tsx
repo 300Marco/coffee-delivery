@@ -34,44 +34,6 @@ export function ProductCard() {
 
   return (
     <ProductCardContainer>
-      {/* {coffee.length > 0 ? (
-        coffee.map((coffee) => {
-          return (
-            <div key={coffee.id}>
-              <CardCoffee>
-                <img src={`./coffees/${coffee.image}`} alt="" />
-                <ProductDetails>
-                  <span>{coffee.title}</span>
-                  <div>
-                    <AmountOfCoffee
-                      quantityCheckout={coffee.quantity}
-                      idCheckout={coffee.id}
-                    />
-
-                    <button
-                      onClick={() => {
-                        removeCoffee(coffee.id);
-                      }}
-                    >
-                      <Trash size={16} /> Remover
-                    </button>
-                  </div>
-                </ProductDetails>
-
-                <TotalPriceCoffee>
-                  R${' '}
-                  {coffee.totalPrice.toLocaleString('pt-br', {
-                    minimumFractionDigits: 2,
-                  })}
-                </TotalPriceCoffee>
-              </CardCoffee>
-              <Divider></Divider>
-            </div>
-          );
-        })
-      ) : (
-        <NoCoffee>Nenhum café selecionado</NoCoffee>
-      )} */}
       <CardCoffeeContainer>
         {coffee.length > 0 ? (
           coffee.map((coffee) => {

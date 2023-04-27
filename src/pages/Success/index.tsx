@@ -15,7 +15,6 @@ import {
   MessageBox,
   SuccessContainer,
 } from './styles';
-// import { Link, NavLink } from 'react-router-dom';
 
 export function Success() {
   const { delivery } = useContext(DeliveryContext);
@@ -86,13 +85,6 @@ export function Success() {
                 </span>
               </DeliveryData>
             </FinalData>
-
-            {/* <BoxForHomePage>
-              <NavLink to="/">
-                <PlusCircle size={20} />
-                Quero mais café
-              </NavLink>
-            </BoxForHomePage> */}
           </BoxDeliveryInformation>
         </BoxDeliveryBackground>
 

@@ -133,22 +133,3 @@ export const DeliveryData = styled.div`
     line-height: 130%;
   }
 `;
-
-// export const BoxForHomePage = styled.div`
-//   width: 100%;
-
-//   display: flex;
-//   justify-content: end;
-
-//   a {
-//     color: ${(props) => props.theme['purple-300']};
-
-//     display: flex;
-//     align-items: center;
-//     gap: 0.2rem;
-
-//     &:hover {
-//       color: ${(props) => props.theme['purple-500']};
-//     }
-//   }
-// `;
