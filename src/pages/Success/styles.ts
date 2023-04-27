@@ -10,6 +10,10 @@ export const SuccessContainer = styled.section`
   flex-direction: column;
   gap: 2.5rem;
 
+  @media (min-width: 768px) and (max-width: 1023px) {
+    width: 100%;
+  }
+
   @media ${device.laptop} {
     width: 100%;
   }
@@ -44,6 +48,11 @@ export const DeliveryInformation = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
 
   @media ${device.laptop} {
     flex-direction: column-reverse;
