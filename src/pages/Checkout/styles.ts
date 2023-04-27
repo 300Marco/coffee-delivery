@@ -37,6 +37,10 @@ export const FormBox = styled.div`
   border-radius: 6px;
   padding: 2.5rem;
   background-color: ${(props) => props.theme['gray-100']};
+
+  @media ${device.mobileL} {
+    padding: 2rem 1rem;
+  }
 `;
 
 export const MessagePaymentError = styled.span`

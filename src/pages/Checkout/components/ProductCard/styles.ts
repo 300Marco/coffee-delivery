@@ -7,7 +7,7 @@ export const ProductCardContainer = styled.div`
   background-color: ${(props) => props.theme['gray-100']};
 
   @media ${device.mobileL} {
-    padding: 2.5rem 1rem;
+    padding: 2.5rem 1rem 1rem;
   }
 `;
 
@@ -196,6 +196,14 @@ export const BaseConfirmButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media ${device.mobileL} {
+    width: 90%;
+
+    position: fixed;
+    bottom: 16px;
+    left: 21.25px;
+  }
 `;
 
 export const ConfirmOrderButton = styled(BaseConfirmButton)`
