@@ -7,6 +7,7 @@ import {
   BannerContent,
   BannerInformation,
   BannerIntro,
+  ImageBannerCoffee,
   ItemIcon,
   ItemInformation,
 } from './styles';
@@ -52,9 +53,9 @@ export function Banner() {
           </ItemInformation>
         </BannerIntro>
 
-        <div>
+        <ImageBannerCoffee>
           <img src={coffeeBanner} alt="" />
-        </div>
+        </ImageBannerCoffee>
       </BannerContent>
     </BannerContainer>
   );

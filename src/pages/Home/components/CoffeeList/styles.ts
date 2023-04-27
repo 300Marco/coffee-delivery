@@ -13,9 +13,9 @@ export const CoffeeContainer = styled.section`
     color: ${(props) => props.theme['gray-800']};
   }
 
-  @media (min-width: 400px) and (max-width: 425px) {
+  /* @media (min-width: 400px) and (max-width: 425px) {
     padding: 2rem 2rem;
-  }
+  } */
 `;
 
 export const CoffeeCardContainer = styled.div`
@@ -30,6 +30,15 @@ export const CoffeeCardContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  @media (min-width: 375px) and (max-width: 425px) {
+    /* padding: 0 3rem; */
+    padding: 0 1.5rem;
+  }
+
+  @media (min-width: 400px) and (max-width: 425px) {
+    padding: 0 3rem;
   }
 `;
 
@@ -59,6 +68,10 @@ export const CoffeeCard = styled.div`
     text-align: center;
     color: ${(props) => props.theme['gray-600']};
   }
+
+  /* @media (min-width: 400px) and (max-width: 425px) {
+    gap: 0.25rem;
+  } */
 `;
 
 export const CoffeeTag = styled.span`

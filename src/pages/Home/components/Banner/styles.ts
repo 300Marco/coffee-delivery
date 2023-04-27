@@ -17,6 +17,13 @@ export const BannerContainer = styled.section`
 
   @media ${device.mobileL} {
     flex-direction: column;
+
+    padding: 2rem 0 5.75rem;
+    justify-content: center;
+  }
+
+  @media ${device.mobileS} {
+    padding: 2.5rem 0 5.75rem;
   }
 `;
 
@@ -24,6 +31,10 @@ export const BannerIntro = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4.125rem;
+
+  @media ${device.mobileL} {
+    gap: 2rem;
+  }
 `;
 
 export const BannerContent = styled.div`
@@ -41,10 +52,11 @@ export const BannerContent = styled.div`
 
   @media ${device.mobileL} {
     flex-direction: column-reverse;
+    gap: 2rem;
 
     img {
-      width: 100%;
-      height: 100%;
+      width: 80%;
+      height: 80%;
     }
   }
 `;
@@ -64,9 +76,14 @@ export const BannerInformation = styled.div`
     color: ${(props) => props.theme['gray-800']};
   }
 
-  @media ${device.mobileS} {
+  @media ${device.mobileL} {
     h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
     }
   }
 `;
@@ -85,7 +102,7 @@ export const ItemInformation = styled.div`
     gap: 0.75rem;
   }
 
-  @media ${device.mobileS} {
+  @media ${device.mobileL} {
     display: flex;
     flex-direction: column;
   }
@@ -107,4 +124,11 @@ export const ItemIcon = styled.span<ItemsProps>`
   padding: 8px;
   color: ${(props) => props.theme.white};
   background-color: ${(props) => props.theme[ITEMS_COLORS[props.itemColor]]};
+`;
+
+export const ImageBannerCoffee = styled.div`
+  @media ${device.mobileL} {
+    display: flex;
+    justify-content: center;
+  }
 `;

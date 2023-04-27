@@ -24,6 +24,10 @@ export const HeaderContainer = styled.header`
     gap: 0.75rem;
   }
 
+  @media ${device.mobileL} {
+    padding: 1rem 1rem;
+  }
+
   @media ${device.mobileS} {
     flex-direction: column;
     gap: 1rem;
