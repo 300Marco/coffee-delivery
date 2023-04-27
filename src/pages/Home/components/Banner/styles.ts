@@ -50,6 +50,15 @@ export const BannerContent = styled.div`
     height: 22.5rem;
   }
 
+  @media (min-width: 426px) and (max-width: 1023px) {
+    gap: 1rem;
+
+    img {
+      width: 20rem;
+      height: 20rem;
+    }
+  }
+
   @media ${device.mobileL} {
     flex-direction: column-reverse;
     gap: 2rem;
@@ -74,6 +83,12 @@ export const BannerInformation = styled.div`
   p {
     font-size: 1.25rem;
     color: ${(props) => props.theme['gray-800']};
+  }
+
+  @media (min-width: 426px) and (max-width: 1023px) {
+    h2 {
+      font-size: 2.375rem;
+    }
   }
 
   @media ${device.mobileL} {

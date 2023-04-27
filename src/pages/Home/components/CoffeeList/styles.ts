@@ -26,6 +26,10 @@ export const CoffeeCardContainer = styled.div`
   column-gap: 2rem;
   row-gap: 2.5rem;
 
+  @media (min-width: 426px) and (max-width: 1439px) {
+    justify-content: center;
+  }
+
   @media ${device.mobileL} {
     display: flex;
     flex-direction: column;
@@ -33,7 +37,6 @@ export const CoffeeCardContainer = styled.div`
   }
 
   @media (min-width: 375px) and (max-width: 425px) {
-    /* padding: 0 3rem; */
     padding: 0 1.5rem;
   }
 
@@ -68,10 +71,6 @@ export const CoffeeCard = styled.div`
     text-align: center;
     color: ${(props) => props.theme['gray-600']};
   }
-
-  /* @media (min-width: 400px) and (max-width: 425px) {
-    gap: 0.25rem;
-  } */
 `;
 
 export const CoffeeTag = styled.span`
