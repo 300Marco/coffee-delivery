@@ -10,6 +10,10 @@ export const CheckoutContainer = styled.main`
   display: flex;
   gap: 2rem;
 
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    gap: 1rem;
+  }
+
   @media (min-width: 768px) and (max-width: 1023px) {
     flex-direction: column-reverse;
   }
@@ -39,6 +43,10 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    width: 32rem;
+  }
 
   @media (min-width: 768px) and (max-width: 1023px) {
     align-items: center;
@@ -187,6 +195,10 @@ const BaseDivDisplay = styled.div`
 
   span {
     color: ${(props) => props.theme['red-alert']};
+  }
+
+  @media (min-width: 1024px) and (max-width: 1439px) {
+    flex-wrap: wrap;
   }
 
   @media ${device.mobileL} {
