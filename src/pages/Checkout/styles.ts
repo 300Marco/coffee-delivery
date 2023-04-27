@@ -14,6 +14,10 @@ export const CheckoutContainer = styled.main`
     flex-direction: column-reverse;
   }
 
+  @media ${device.mobileL} {
+    margin-top: 6.25rem;
+  }
+
   @media ${device.mobileS} {
     margin-top: 10.5rem;
   }

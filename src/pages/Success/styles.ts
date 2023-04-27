@@ -13,6 +13,14 @@ export const SuccessContainer = styled.section`
   @media ${device.laptop} {
     width: 100%;
   }
+
+  @media ${device.mobileL} {
+    margin-top: 6.25rem;
+  }
+
+  @media ${device.mobileS} {
+    margin-top: 10.5rem;
+  }
 `;
 
 export const MessageBox = styled.div`
