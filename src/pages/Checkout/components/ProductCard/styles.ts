@@ -6,6 +6,11 @@ export const ProductCardContainer = styled.div`
   padding: 2.5rem;
   background-color: ${(props) => props.theme['gray-100']};
 
+  @media (min-width: 768px) and (max-width: 1023px) {
+    width: 28rem;
+    margin: 0 auto;
+  }
+
   @media ${device.mobileL} {
     padding: 2.5rem 1rem 1rem;
   }
@@ -196,6 +201,14 @@ export const BaseConfirmButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    width: 90%;
+
+    position: fixed;
+    bottom: 16px;
+    left: 37.805px;
+  }
 
   @media ${device.mobileL} {
     width: 90%;

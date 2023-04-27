@@ -10,6 +10,10 @@ export const CheckoutContainer = styled.main`
   display: flex;
   gap: 2rem;
 
+  @media (min-width: 768px) and (max-width: 1023px) {
+    flex-direction: column-reverse;
+  }
+
   @media ${device.mobileL} {
     flex-direction: column-reverse;
   }
@@ -35,12 +39,20 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    align-items: center;
+  }
 `;
 
 export const FormBox = styled.div`
   border-radius: 6px;
   padding: 2.5rem;
   background-color: ${(props) => props.theme['gray-100']};
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    width: 38rem;
+  }
 
   @media ${device.mobileL} {
     padding: 2rem 1rem;
@@ -134,16 +146,13 @@ export const FormFields = styled.section`
     width: 3.75rem;
   }
 
-  @media ${device.mobileL} {
-    input {
-      /* border: 1px solid green; */
-      /* width: 100% !important; */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    input[name='city'] {
+      width: 15.25rem;
     }
+  }
 
-    /* input[name='number'] { */
-    /* width: 100%; */
-    /* } */
-
+  @media ${device.mobileL} {
     input[name='city'] {
       width: 14rem;
     }
@@ -254,6 +263,12 @@ export const FormOfPayment = styled.section`
 
     svg {
       color: ${(props) => props.theme['purple-300']};
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      padding: 1rem 0.5rem;
+
+      justify-content: center;
     }
 
     @media ${device.mobileL} {
