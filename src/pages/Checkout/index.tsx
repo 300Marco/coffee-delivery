@@ -37,14 +37,11 @@ const deliveryAddressValidationSchema = zod.object({
     .min(9, 'Informe corretamente o CEP com 8 dígitos')
     .max(9, 'Informe corretamente o CEP com 8 dígitos'),
   road: zod.string().min(3, 'Informe o nome da rua'),
-  number: zod.string().min(1, 'Informe no mínimo 1 caractere'),
+  number: zod.string().min(1, 'Informe o número'),
   complement: zod.string().max(100).optional(),
-  neighborhood: zod.string().min(3, 'Informe no mínimo 3 caracteres').max(30),
-  city: zod.string().min(3, 'Informe no mínimo 3 caracteres').max(28),
-  uf: zod
-    .string()
-    .min(2, 'Informe 2 caracteres')
-    .max(2, 'Informe 2 caracteres'),
+  neighborhood: zod.string().min(3, 'Informe o nome do bairro').max(30),
+  city: zod.string().min(3, 'Informe o nome da cidade').max(28),
+  uf: zod.string().min(2, 'Informe a UF').max(2, 'Informe a UF'),
   payment: zod.string(),
 });
 
