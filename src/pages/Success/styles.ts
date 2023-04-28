@@ -14,12 +14,13 @@ export const SuccessContainer = styled.section`
     width: 100%;
   }
 
-  @media ${device.laptop} {
+  @media (min-width: 1024px) and (max-width: 1439px) {
     width: 100%;
   }
 
   @media ${device.mobileL} {
     margin-top: 6.25rem;
+    width: 100%;
   }
 
   @media ${device.mobileS} {
@@ -54,11 +55,9 @@ export const DeliveryInformation = styled.div`
     width: 100%;
   }
 
-  @media ${device.laptop} {
-    flex-direction: column-reverse;
-  }
-
   @media ${device.mobileL} {
+    flex-direction: column-reverse;
+
     img {
       width: 100%;
     }
